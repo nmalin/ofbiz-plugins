@@ -22,11 +22,11 @@ under the License.
     <display-name>Apache OFBiz - Perlesduberry Component</display-name>
     <description>Perlesduberry Component of the Apache OFBiz Project</description>
 
-    <!-- context-param>
-        <param-name>webSiteId</param-name>
-        <param-value>perlesduberrySite</param-value>
+    <context-param>
         <description>A unique ID used to look up the WebSite entity. Only for component using a WebSite entity, like ecommerce</description>
-    </context-param-->
+        <param-name>webSiteId</param-name>
+        <param-value>PERLESDUBERRY</param-value>
+    </context-param>
     <context-param>
         <description>A unique name used to identify/recognize the local dispatcher for the Service Engine</description>
         <param-name>localDispatcherName</param-name><param-value>perlesduberry</param-value>
@@ -38,7 +38,7 @@ under the License.
     <context-param>
         <description>The location of the main-decorator screen to use for this webapp; referred to as a context variable in screen def XML files.</description>
         <param-name>mainDecoratorLocation</param-name>
-        <param-value>component://perlesduberry/widget/CommonScreens.xml</param-value>
+        <param-value>component://ecommerce/widget/CommonScreens.xml</param-value>
     </context-param>
     <context-param>
         <description>Remove unnecessary whitespace from HTML output.</description>
