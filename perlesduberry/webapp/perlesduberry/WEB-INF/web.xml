@@ -45,6 +45,11 @@ under the License.
         <param-name>compressHTML</param-name>
         <param-value>false</param-value>
     </context-param>
+    <context-param>
+        <description>Category par défaut</description>
+        <param-name>CATALOG_TOP_CATEGORY</param-name>
+        <param-value>CATALOG_PDB_ROOT</param-value>
+    </context-param>
 
 
     <filter>
