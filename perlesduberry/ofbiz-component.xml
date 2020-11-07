@@ -48,6 +48,7 @@ under the License.
         title="Perlesduberry"
         server="default-server"
         location="webapp/perlesduberry"
-        base-permission="OFBTOOLS,PERLESDUBERRY"
+        app-bar-display="false"
+        use-autologin-cookie="true"
         mount-point="/perlesduberry"/>
 </ofbiz-component>
