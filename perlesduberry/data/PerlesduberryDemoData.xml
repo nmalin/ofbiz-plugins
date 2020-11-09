@@ -20,6 +20,12 @@ under the License.
 
 <entity-engine-xml>
 
+    <Party partyId="PDB" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <PartyGroup groupName="Perles du Berry" partyId="PDB"/>
+    <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="PDB"/>
+    <Facility facilityId="PDB_LAPAN" facilityTypeId="OFFICE" facilityName="Lapan" description="" ownerPartyId="PDB" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="" defaultDaysToShip="5" />
+    <FacilityLocation facilityId="PDB_LAPAN" locationSeqId="GENERAL" locationTypeEnumId="FLT_PICKLOC" areaId="A"/>
+
     <!--Produit -->
     <ProductFeatureCategory productFeatureCategoryId="QUAL_TRUFFE" description="Qualité des truffes"/>
     <ProductFeature productFeatureId="QUAL_TRUFFE_0" productFeatureTypeId="TYPE" productFeatureCategoryId="QUAL_TRUFFE" description="Extra" idCode="0"/>
@@ -35,26 +41,36 @@ under the License.
     <ProductFeatureAppl productId="TRUFFE" productFeatureId="QUAL_TRUFFE_3" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="3"/>
 
     <Product productId="TRUFFE_CAT_1" productTypeId="FINISHED_GOOD" internalName="Truffe première catégorie" isVirtual="N" isVariant="Y"/>
-    <ProductFeatureAppl productId="TRUFFE_CAT_1" productFeatureId="QUAL_TRUFFE_1" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
+    <ProductFeatureAppl productId="TRUFFE_CAT_1" productFeatureId="QUAL_TRUFFE_1" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
     <Product productId="TRUFFE_CAT_2" productTypeId="FINISHED_GOOD" internalName="Truffe deuxième catégorie" isVirtual="N" isVariant="Y"/>
-    <ProductFeatureAppl productId="TRUFFE_CAT_2" productFeatureId="QUAL_TRUFFE_2" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
+    <ProductFeatureAppl productId="TRUFFE_CAT_2" productFeatureId="QUAL_TRUFFE_2" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
     <Product productId="TRUFFE_CAT_3" productTypeId="FINISHED_GOOD" internalName="Truffe vrac" isVirtual="N" isVariant="Y"/>
-    <ProductFeatureAppl productId="TRUFFE_CAT_3" productFeatureId="QUAL_TRUFFE_3" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="3"/>
+    <ProductFeatureAppl productId="TRUFFE_CAT_3" productFeatureId="QUAL_TRUFFE_3" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="3"/>
 
     <ProductFeatureCategory productFeatureCategoryId="TAILLE_BOUT" description="Taille du conditionnement"/>
     <ProductFeature productFeatureId="TAILLE_BOUT_250" productFeatureTypeId="SIZE" productFeatureCategoryId="TAILLE_BOUT" description="250 ml" uomId="VLIQ_L" numberSpecified="0.25" defaultSequenceNum="1"/>
-    <ProductFeature productFeatureId="TAILLE_BOUT_150" productFeatureTypeId="SIZE" productFeatureCategoryId="TAILLE_BOUT" description="150 ml" uomId="VLIQ_L" numberSpecified="0.15" defaultSequenceNum="1"/>
+    <ProductFeature productFeatureId="TAILLE_BOUT_100" productFeatureTypeId="SIZE" productFeatureCategoryId="TAILLE_BOUT" description="100 ml" uomId="VLIQ_L" numberSpecified="0.10" defaultSequenceNum="1"/>
 
     <Product productId="HUILE" productTypeId="FINISHED_GOOD" internalName="Huile" isVirtual="Y" isVariant="N"/>
     <ProductFeatureAppl productId="HUILE" productFeatureId="TAILLE_BOUT_250" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
-    <ProductFeatureAppl productId="HUILE" productFeatureId="TAILLE_BOUT_150" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
+    <ProductFeatureAppl productId="HUILE" productFeatureId="TAILLE_BOUT_100" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
 
-    <Product productId="HUILE_250" productTypeId="FINISHED_GOOD" internalName="Huile 250ml" isVirtual="N" isVariant="Y"/>
-    <ProductFeatureAppl productId="HUILE_250" productFeatureId="TAILLE_BOUT_250" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
-    <Product productId="HUILE_150" productTypeId="FINISHED_GOOD" internalName="Huile 250ml" isVirtual="N" isVariant="Y"/>
-    <ProductFeatureAppl productId="HUILE_150" productFeatureId="TAILLE_BOUT_150" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
-    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="HUILE" productIdTo="HUILE_250" quantity="1.0"/>
-    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="HUILE" productIdTo="HUILE_150" quantity="1.0"/>
+    <Product productId="HUILE_250" productTypeId="FINISHED_GOOD" internalName="Huile 250ml" isVirtual="N" isVariant="N"/>
+    <ProductFeatureAppl productId="HUILE_250" productFeatureId="TAILLE_BOUT_250" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
+    <ProductFacility productId="HUILE_250" facilityId="PDB_LAPAN" minimumStock="0.000000" reorderQuantity="0.000000" />
+    <InventoryItem inventoryItemId="I1000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="HUILE_250" ownerPartyId="PDB" statusId="INV_AVAILABLE" facilityId="PDB_LAPAN"
+                   locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="100" availableToPromiseTotal="100" currencyUomId="EUR"/>
+    <InventoryItemDetail availableToPromiseDiff="100" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1000" inventoryItemId="I1000" quantityOnHandDiff="100"/>
+
+    <Product productId="HUILE_100" productTypeId="FINISHED_GOOD" internalName="Huile 100ml" isVirtual="N" isVariant="N"/>
+    <ProductFeatureAppl productId="HUILE_100" productFeatureId="TAILLE_BOUT_100" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="2"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="HUILE" productIdTo="HUILE_250"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="HUILE" productIdTo="HUILE_100"/>
+    <ProductFacility productId="HUILE_250" facilityId="PDB_LAPAN" minimumStock="0.000000" reorderQuantity="0.000000" />
+    <InventoryItem inventoryItemId="I1001" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="HUILE_100" ownerPartyId="PDB" statusId="INV_AVAILABLE" facilityId="PDB_LAPAN"
+                   locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="100" availableToPromiseTotal="100" currencyUomId="EUR"/>
+    <InventoryItemDetail availableToPromiseDiff="100" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1001" inventoryItemId="I1001" quantityOnHandDiff="100"/>
+
 
     <!--Categorie -->
     <ProductCategory categoryName="Racine" longDescription="Racine des categories de navigation de la perles du berry" productCategoryId="CATALOG_PDB_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
@@ -64,6 +80,8 @@ under the License.
     <ProductCategory categoryName="Autres producteurs" productCategoryId="PRD_AUTRES" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
     <ProductCategory categoryName="Produits Transformés" productCategoryId="PRD_TRANS" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
     <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE_100' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE_250' fromDate='2020-01-01 00:00:00.0'/>
 
     <ProductCategory categoryName="Coffrés Cadeaux" productCategoryId="PRD_COF_CADEAUX" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
 
@@ -74,12 +92,13 @@ under the License.
     <ProductCategory categoryName="5,5%" productCategoryId="TVA55" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="TAXFR"/>
     <ProductCategoryMember productCategoryId='TVA55' productId='TRUFFE' fromDate='2020-01-01 00:00:00.0'/>
     <ProductCategoryMember productCategoryId='TVA55' productId='HUILE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='HUILE_250' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='HUILE_100' fromDate='2020-01-01 00:00:00.0'/>
 
-
-    <Party partyId="PDB" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
-    <PartyGroup groupName="Perles du Berry" partyId="PDB"/>
-    <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="PDB"/>
-    <Facility facilityId="PDB_LAPAN" facilityTypeId="OFFICE" facilityName="Lapan" description="" ownerPartyId="PDB" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="" defaultDaysToShip="5" />
+    <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_TRANS"/>
+    <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_AUTRES"/>
+    <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_COF_CADEAUX"/>
+    <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_TRUFFE"/>
 
     <!-- Tax configuration -->
     <Party partyId="TRESOR_PUBLIC_FR" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
@@ -96,7 +115,7 @@ under the License.
     <ProductStore productStoreId="STORE_PDB" storeName="Perles deu Berry" companyName="" title=""
         subtitle="" payToPartyId="PDB" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
         addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
-        vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix=""
+        vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="" showPricesWithVatTax="Y"
         inventoryFacilityId="PDB_LAPAN" oneInventoryFacility="Y" checkInventory="Y" reserveInventory="Y" balanceResOnOrderCreation="N" reserveOrderEnumId="" requireInventory="Y"
         defaultLocaleString="fr_FR" defaultCurrencyUomId="EUR" defaultSalesChannelEnumId="" allowPassword="Y" explodeOrderItems="N" retryFailedAuths="Y" reqReturnInventoryReceive="N"
         headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
@@ -111,20 +130,24 @@ under the License.
 
     <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"/>
 
+    <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_PDB_ROOT"
+    description="The default top category to display."/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="CATALOG_PDB_ROOT"
+    description="The category that has all products."/>
     <!--TVA-->
-    <TaxAuthorityRateProduct productCategoryId="TVA20" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_12" taxAuthorityRateTypeId="VAT_TAX" taxPercentage="20" taxPromotions="Y" taxShipping="Y" description="TVA 20%"/>
-    <TaxAuthorityRateProduct productCategoryId="TVA10" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_2" taxAuthorityRateTypeId="VAT_TAX" taxPercentage="10" taxPromotions="Y" taxShipping="Y" description="TVA 10%"/>
-    <TaxAuthorityRateProduct productCategoryId="TVA55" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxAuthorityRateTypeId="VAT_TAX" taxPercentage="5.5" taxPromotions="Y" taxShipping="Y" description="TVA 5.5%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA20" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_1" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="20" taxPromotions="Y" taxShipping="Y" description="TVA 20%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA10" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_2" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="10" taxPromotions="Y" taxShipping="Y" description="TVA 10%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA55" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="5.5" taxPromotions="Y" taxShipping="Y" description="TVA 5.5%"/>
 
     <ProdCatalog prodCatalogId="CATALOG_PDB" catalogName="Catalog des perles" useQuickAdd="Y"/>
     <ProductStoreCatalog productStoreId="STORE_PDB" prodCatalogId="CATALOG_PDB" fromDate="2020-01-01 12:00:00.0" sequenceNum="1"/>
     <ProdCatalogCategory prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT" prodCatalogId="CATALOG_PDB" productCategoryId="CATALOG_PDB_ROOT" fromDate="2020-01-01 00:00:00.0" sequenceNum="2"/>
 
     <!--Prix repas-->
-    <ProductPrice productId="HUILE_250" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="16"
-                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="Y"  />
-    <ProductPrice productId="HUILE_150" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="12"
-                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="Y" />
+    <ProductPrice productId="HUILE_250" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="15.1659"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="16.000" priceWithoutTax="15.1659" taxAmount="0.8341" />
+    <ProductPrice productId="HUILE_100" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="9.47867"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="10.000" priceWithoutTax="9.47867" taxAmount="0.52133"/>
 
     <!--Ajout ecran d'impression de facturation-->
     <CustomScreenType customScreenTypeId="CST_INVOICE_TPL" description="Invoice types template"/>
