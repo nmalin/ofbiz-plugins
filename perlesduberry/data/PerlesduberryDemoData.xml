@@ -20,6 +20,9 @@ under the License.
 
 <entity-engine-xml>
 
+    <Party partyId="6666" partyTypeId="PERSON" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <Person lastName="Malin" firstName="Nicolas" partyId="6666"/>
+    <UserLogin userLoginId="mnicolas" partyId="6666"/>
     <Party partyId="PDB" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
     <PartyGroup groupName="Perles du Berry" partyId="PDB"/>
     <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="PDB"/>
@@ -33,7 +36,19 @@ under the License.
     <ProductFeature productFeatureId="QUAL_TRUFFE_2" productFeatureTypeId="TYPE" productFeatureCategoryId="QUAL_TRUFFE" description="Deuxième catégorie" idCode="2"/>
     <ProductFeature productFeatureId="QUAL_TRUFFE_3" productFeatureTypeId="TYPE" productFeatureCategoryId="QUAL_TRUFFE" description="Hors catégorie" idCode="3"/>
 
+    <ProductFeatureType description="Conservation" hasTable="N" productFeatureTypeId="CONSERV"/>
+    <ProductFeatureCategory productFeatureCategoryId="T_CONSER" description="Température de conservation"/>
+    <ProductFeature productFeatureId="T_CONSER_A" productFeatureTypeId="TYPE" productFeatureCategoryId="T_CONSER" description="Ambiant (15°c-25°c)" idCode="0"/>
+    <ProductFeature productFeatureId="T_CONSER_0_5" productFeatureTypeId="TYPE" productFeatureCategoryId="T_CONSER" description="Frigo (0°c-6°c)" idCode="1"/>
+    <ProductFeature productFeatureId="T_CONSER_18" productFeatureTypeId="TYPE" productFeatureCategoryId="T_CONSER" description="Congélateur (-18°)" idCode="2"/>
 
+    <ProductFeatureGroup productFeatureGroupId="EXP_EXCLU_STD" description="Caractéristique non éligible pour l'expédition standard" />
+    <ProductFeatureGroupAppl  productFeatureGroupId="EXP_EXCLU_STD" productFeatureId="T_CONSER_0_5" fromDate="2020-01-01 12:00:00" />
+    <ProductFeatureGroupAppl  productFeatureGroupId="EXP_EXCLU_STD" productFeatureId="T_CONSER_18" fromDate="2020-01-01 12:00:00" />
+    <ProductFeatureGroup productFeatureGroupId="EXP_FRAIS" description="Caractéristique éligible pour l'expédition en frais" />
+    <ProductFeatureGroupAppl  productFeatureGroupId="EXP_FRAIS" productFeatureId="T_CONSER_0_5" fromDate="2020-01-01 12:00:00" />
+    <ProductFeatureGroup productFeatureGroupId="EXP_SURGEL" description="Caractéristique éligible pour l'expédition en surgelé" />
+    <ProductFeatureGroupAppl  productFeatureGroupId="EXP_SURGEL" productFeatureId="T_CONSER_18" fromDate="2020-01-01 12:00:00" />
     <Product productId="TRUFFE" productTypeId="FINISHED_GOOD" internalName="Truffe" isVirtual="Y" isVariant="N"/>
     <ProductFeatureAppl productId="TRUFFE" productFeatureId="QUAL_TRUFFE_0" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="10"/>
     <ProductFeatureAppl productId="TRUFFE" productFeatureId="QUAL_TRUFFE_1" productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
@@ -71,6 +86,36 @@ under the License.
                    locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="100" availableToPromiseTotal="100" currencyUomId="EUR"/>
     <InventoryItemDetail availableToPromiseDiff="100" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1001" inventoryItemId="I1001" quantityOnHandDiff="100"/>
 
+    <Product productId="MERINGUE_TRUFFEE" productTypeId="FINISHED_GOOD" internalName="Sachet de meringue truffée" isVirtual="N" isVariant="N"/>
+    <ProductFacility productId="MERINGUE_TRUFFEE" facilityId="PDB_LAPAN" minimumStock="0.000000" reorderQuantity="0.000000" />
+    <InventoryItem inventoryItemId="I1002" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="MERINGUE_TRUFFEE" ownerPartyId="PDB" statusId="INV_AVAILABLE" facilityId="PDB_LAPAN"
+                   locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="100" availableToPromiseTotal="100" currencyUomId="EUR"/>
+    <InventoryItemDetail availableToPromiseDiff="100" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1002" inventoryItemId="I1002" quantityOnHandDiff="100"/>
+
+    <Product productId="BEURRE_TRUFFEE" productTypeId="FINISHED_GOOD" internalName="Beurre truffée" isVirtual="N" isVariant="N"/>
+    <ProductFacility productId="BEURRE_TRUFFEE" facilityId="PDB_LAPAN" minimumStock="0.000000" reorderQuantity="0.000000" />
+    <InventoryItem inventoryItemId="I1004" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="BEURRE_TRUFFEE" ownerPartyId="PDB" statusId="INV_AVAILABLE" facilityId="PDB_LAPAN"
+                   locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="100" availableToPromiseTotal="100" currencyUomId="EUR"/>
+    <InventoryItemDetail availableToPromiseDiff="100" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1004" inventoryItemId="I1004" quantityOnHandDiff="100"/>
+    <ProductFeatureAppl productId="BEURRE_TRUFFEE" productFeatureId="T_CONSER_0_5" productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2020-01-01 12:00:00" sequenceNum="1"/>
+
+
+    <Product productId="TAGLIATELLE_NATURE" productTypeId="FINISHED_GOOD" internalName="Tagliatelle nature" isVirtual="N" isVariant="N"/>
+    <ProductFacility productId="TAGLIATELLE_NATURE" facilityId="PDB_LAPAN" minimumStock="2.000000" reorderQuantity="10.000000" />
+    <InventoryItem inventoryItemId="I1003" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="TAGLIATELLE_NATURE" ownerPartyId="PDB" statusId="INV_AVAILABLE" facilityId="PDB_LAPAN"
+                   locationSeqId="GENERAL" unitCost="10" quantityOnHandTotal="10" availableToPromiseTotal="10" currencyUomId="EUR"/>
+    <InventoryItemDetail availableToPromiseDiff="10" description="Init" effectiveDate="2020-01-01 00:00:00.562" inventoryItemDetailSeqId="I1003" inventoryItemId="I1003" quantityOnHandDiff="100"/>
+
+
+    <Product productId="DECOUV_TRUFFE_COF1" productTypeId="MARKETING_PKG_PICK" internalName="Coffré découvert de la truffe cond 1" isVirtual="N" isVariant="N"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="HUILE_100" productId="DECOUV_TRUFFE_COF1"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="MERINGUE_TRUFFEE" productId="DECOUV_TRUFFE_COF1"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="TAGLIATELLE_NATURE" productId="DECOUV_TRUFFE_COF1"/>
+
+    <Product productId="DECOUV_TRUFFE_COF2" productTypeId="MARKETING_PKG_PICK" internalName="Coffré découvert de la truffe cond 2" isVirtual="N" isVariant="N"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="BEURRE_TRUFFEE" productId="DECOUV_TRUFFE_COF2"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="MERINGUE_TRUFFEE" productId="DECOUV_TRUFFE_COF2"/>
+    <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="TAGLIATELLE_NATURE" productId="DECOUV_TRUFFE_COF2"/>
 
     <!--Categorie -->
     <ProductCategory categoryName="Racine" longDescription="Racine des categories de navigation de la perles du berry" productCategoryId="CATALOG_PDB_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
@@ -78,12 +123,18 @@ under the License.
     <ProductCategoryMember productCategoryId='PRD_TRUFFE' productId='TRUFFE' fromDate='2020-01-01 00:00:00.0'/>
 
     <ProductCategory categoryName="Autres producteurs" productCategoryId="PRD_AUTRES" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
+    <ProductCategoryMember productCategoryId='PRD_AUTRES' productId='TAGLIATELLE_NATURE' fromDate='2020-01-01 00:00:00.0'/>
+
     <ProductCategory categoryName="Produits Transformés" productCategoryId="PRD_TRANS" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
     <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE' fromDate='2020-01-01 00:00:00.0'/>
     <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE_100' fromDate='2020-01-01 00:00:00.0'/>
     <ProductCategoryMember productCategoryId='PRD_TRANS' productId='HUILE_250' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='PRD_TRANS' productId='MERINGUE_TRUFFEE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='PRD_TRANS' productId='BEURRE_TRUFFEE' fromDate='2020-01-01 00:00:00.0'/>
 
     <ProductCategory categoryName="Coffrés Cadeaux" productCategoryId="PRD_COF_CADEAUX" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
+    <ProductCategoryMember productCategoryId='PRD_COF_CADEAUX' productId='DECOUV_TRUFFE_COF1' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='PRD_COF_CADEAUX' productId='DECOUV_TRUFFE_COF2' fromDate='2020-01-01 00:00:00.0'/>
 
     <ProductCategory categoryName="Taxe France" longDescription="Taxe France" productCategoryId="TAXFR" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory categoryName="20%" productCategoryId="TVA20" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="TAXFR"/>
@@ -94,6 +145,11 @@ under the License.
     <ProductCategoryMember productCategoryId='TVA55' productId='HUILE' fromDate='2020-01-01 00:00:00.0'/>
     <ProductCategoryMember productCategoryId='TVA55' productId='HUILE_250' fromDate='2020-01-01 00:00:00.0'/>
     <ProductCategoryMember productCategoryId='TVA55' productId='HUILE_100' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='MERINGUE_TRUFFEE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='BEURRE_TRUFFEE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='TAGLIATELLE_NATURE' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='DECOUV_TRUFFE_COF1' fromDate='2020-01-01 00:00:00.0'/>
+    <ProductCategoryMember productCategoryId='TVA55' productId='DECOUV_TRUFFE_COF2' fromDate='2020-01-01 00:00:00.0'/>
 
     <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_TRANS"/>
     <ProductCategoryRollup fromDate="2020-06-01 00:00:00.0" parentProductCategoryId="CATALOG_PDB_ROOT" productCategoryId="PRD_AUTRES"/>
@@ -111,23 +167,48 @@ under the License.
     <Party partyId="_NA_" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
     <PartyGroup groupName="No applicate" partyId="_NA_"/>
     <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
-    <ShipmentMethodType description="Vente Direct" shipmentMethodTypeId="NO_SHIPPING"/>
+    <ShipmentMethodType description="Récupération à la ferme" shipmentMethodTypeId="NO_SHIPPING"/>
+    <ShipmentMethodType description="Colis" shipmentMethodTypeId="COLIS"/>
+    <ShipmentMethodType description="Colis frais" shipmentMethodTypeId="COLIS_FRAIS"/>
+    <ShipmentMethodType description="Colis Surgelé" shipmentMethodTypeId="COLIS_SURGEL"/>
     <ProductStore productStoreId="STORE_PDB" storeName="Perles deu Berry" companyName="" title=""
         subtitle="" payToPartyId="PDB" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
         addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
-        vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="" showPricesWithVatTax="Y"
+        vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="P" showPricesWithVatTax="Y"
         inventoryFacilityId="PDB_LAPAN" oneInventoryFacility="Y" checkInventory="Y" reserveInventory="Y" balanceResOnOrderCreation="N" reserveOrderEnumId="" requireInventory="Y"
         defaultLocaleString="fr_FR" defaultCurrencyUomId="EUR" defaultSalesChannelEnumId="" allowPassword="Y" explodeOrderItems="N" retryFailedAuths="Y" reqReturnInventoryReceive="N"
         headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
         itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED"
         visualThemeId="EC_DEFAULT" prodSearchExcludeVariants="Y" autoApproveInvoice="Y" autoApproveOrder="Y" showOutOfStockProducts="Y"/>
     <CarrierShipmentMethod partyId="_NA_" roleTypeId="CARRIER" shipmentMethodTypeId="NO_SHIPPING" sequenceNumber="1"/>
+
+    <Party partyId="LAPOSTE" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <PartyGroup groupName="La Poste" partyId="LAPOSTE"/>
+    <PartyRole partyId="LAPOSTE" roleTypeId="CARRIER"/>
+    <CarrierShipmentMethod partyId="LAPOSTE" roleTypeId="CARRIER" shipmentMethodTypeId="COLIS" sequenceNumber="2"/>
+    <CarrierShipmentMethod partyId="LAPOSTE" roleTypeId="CARRIER" shipmentMethodTypeId="COLIS_FRAIS" sequenceNumber="3"/>
+    <CarrierShipmentMethod partyId="LAPOSTE" roleTypeId="CARRIER" shipmentMethodTypeId="COLIS_SURGEL" sequenceNumber="4"/>
+
     <ProductStorePaymentSetting productStoreId="STORE_PDB" paymentMethodTypeId="EFT_ACCOUNT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
-    <ProductStorePaymentSetting productStoreId="STORE_PDB" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStoreFacility productStoreId="STORE_PDB" facilityId="PDB_LAPAN" fromDate="2017-01-01 12:00:00.0" sequenceNum="1"/>
+    <PartyAcctgPreference baseCurrencyUomId="EUR" cogsMethodId="COGS_AVG_COST" enableAccounting="N" fiscalYearStartDay="1" fiscalYearStartMonth="1" lastInvoiceNumber="1" oldInvoiceSequenceEnumId="INVSQ_ENF_SEQ" oldOrderSequenceEnumId="ODRSQ_ENF_SEQ" oldQuoteSequenceEnumId="QTESQ_ENF_SEQ" partyId="PDB" />
 
     <ProductStoreShipmentMeth allowUspsAddr="N" includeNoChargeItems="Y" partyId="_NA_" productStoreId="STORE_PDB" productStoreShipMethId="PDB_NO_SHIP" requireUspsAddr="N" roleTypeId="CARRIER" sequenceNumber="1" shipmentMethodTypeId="NO_SHIPPING"/>
-
+    <ProductStoreShipmentMeth excludeFeatureGroup="EXP_EXCLU_STD" allowUspsAddr="N" includeNoChargeItems="Y" partyId="LAPOSTE" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLISSIMO" requireUspsAddr="N" roleTypeId="CARRIER" sequenceNumber="1" shipmentMethodTypeId="COLIS"/>
+    <ProductStoreShipmentMeth includeFeatureGroup="EXP_FRAIS" allowUspsAddr="N" includeNoChargeItems="Y" partyId="LAPOSTE" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_FRAIS" requireUspsAddr="N" roleTypeId="CARRIER" sequenceNumber="2" shipmentMethodTypeId="COLIS_FRAIS"/>
+    <ProductStoreShipmentMeth includeFeatureGroup="EXP_SURGEL" allowUspsAddr="N" includeNoChargeItems="Y" partyId="LAPOSTE" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" requireUspsAddr="N" roleTypeId="CARRIER" sequenceNumber="2" shipmentMethodTypeId="COLIS_SURGEL"/>
+    <QuantityBreak fromQuantity="0.000000" quantityBreakId="9000" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="2.000000"/>
+    <QuantityBreak fromQuantity="2.000000" quantityBreakId="9001" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="5.000000"/>
+    <QuantityBreak fromQuantity="5.000000" quantityBreakId="9002" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.000000"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="8.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLISSIMO" shipmentCostEstimateId="9000" shipmentMethodTypeId="COLIS" weightBreakId="9000" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="14.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLISSIMO" shipmentCostEstimateId="9001" shipmentMethodTypeId="COLIS" weightBreakId="9001" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="25.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLISSIMO" shipmentCostEstimateId="9002" shipmentMethodTypeId="COLIS" weightBreakId="9002" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="12.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_FRAIS" shipmentCostEstimateId="9003" shipmentMethodTypeId="COLIS_FRAIS" weightBreakId="9000" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="18.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_FRAIS" shipmentCostEstimateId="9004" shipmentMethodTypeId="COLIS_FRAIS" weightBreakId="9001" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_FRAIS" shipmentCostEstimateId="9005" shipmentMethodTypeId="COLIS_FRAIS" weightBreakId="9002" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="12.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9006" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9000" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="18.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9007" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9001" weightUomId="WT_kg"/>
+    <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9008" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9002" weightUomId="WT_kg"/>
     <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"/>
 
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_PDB_ROOT"
@@ -148,6 +229,17 @@ under the License.
                   taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="16.000" priceWithoutTax="15.1659" taxAmount="0.8341" />
     <ProductPrice productId="HUILE_100" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="9.47867"
                   taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="10.000" priceWithoutTax="9.47867" taxAmount="0.52133"/>
+    <ProductPrice productId="TAGLIATELLE_NATURE" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="9.47867"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="5.000" priceWithoutTax="4.7393" taxAmount="0.2607"/>
+    <ProductPrice productId="MERINGUE_TRUFFEE" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="9.47867"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="10.000" priceWithoutTax="9.4787" taxAmount="0.5213"/>
+    <ProductPrice productId="BEURRE_TRUFFEE" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="11.3744"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="12.000" priceWithoutTax="11.3744" taxAmount="0.6256"/>
+    <ProductPrice productId="DECOUV_TRUFFE_COF1" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="22.7488"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="24.000" priceWithoutTax="22.7488" taxAmount="1.2512"/>
+    <ProductPrice productId="DECOUV_TRUFFE_COF2" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="22.7488"
+                  taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxInPrice="N" priceWithTax="24.000" priceWithoutTax="22.7488" taxAmount="1.2512"/>
+
 
     <!--Ajout ecran d'impression de facturation-->
     <CustomScreenType customScreenTypeId="CST_INVOICE_TPL" description="Invoice types template"/>
