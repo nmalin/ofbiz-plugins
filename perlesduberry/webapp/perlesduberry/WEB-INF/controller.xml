@@ -30,5 +30,14 @@ under the License.
 
     <!-- Request Mappings -->
 
+    <request-map uri="quickcheckout">
+        <security https="true" auth="true"/>
+        <event type="groovy" path="component://perlesduberry/groovyScripts/order/CartNotEmptyAndInitValues.groovy"/>
+        <response name="success" type="view"  save-current-view="true" value="quickcheckout"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
+
     <!-- View Mappings -->
+    <view-map name="quickcheckout" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#checkoutoptions"/>
+    <view-map name="orderstatus" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderstatus"/>
 </site-conf>
