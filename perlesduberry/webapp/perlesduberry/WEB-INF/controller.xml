@@ -38,6 +38,7 @@ under the License.
     </request-map>
 
     <!-- View Mappings -->
+    <view-map name="newcustomer" type="screen" page="component://perlesduberry/widget/ProfileScreens.xml#newcustomer"/>
     <view-map name="quickcheckout" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#checkoutoptions"/>
     <view-map name="orderstatus" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderstatus"/>
 </site-conf>
