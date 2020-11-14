@@ -17,9 +17,9 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if orderHeader?has_content>
-    ${screens.render("component://perlesduberry/widget/OrderScreens.xml#orderheader")}
+    <@ofbizScreen>component://perlesduberry/widget/OrderScreens.xml#orderheader</@ofbizScreen>
     <br />
-    ${screens.render("component://perlesduberry/widget/OrderScreens.xml#orderitems")}
+    <@ofbizScreen>component://perlesduberry/widget/OrderScreens.xml#orderitems</@ofbizScreen>
 <#else>
   <h3>${uiLabelMap.OrderSpecifiedNotFound}.</h3>
 </#if>

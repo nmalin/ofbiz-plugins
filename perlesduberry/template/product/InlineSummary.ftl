@@ -1,0 +1,2 @@
+<img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" class="cssImgSmall" alt=""/>
+<a href="<@ofbizCatalogAltUrl productId=product.productId/>" class="linktext">${productName}</a>

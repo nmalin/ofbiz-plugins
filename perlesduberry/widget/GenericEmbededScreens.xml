@@ -21,16 +21,14 @@ under the License.
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
-    <screen name="main">
+    <screen name="displayProductSummaryInline">
         <section>
             <actions>
-                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <entity-one value-field="product" entity-name="Product"/>
+                <script location="component://perlesduberry/groovyScripts/product/ProductSummary.groovy"/>
             </actions>
             <widgets>
-                <decorator-screen name="PerlesduberryCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                    </decorator-section>
-                </decorator-screen>
+                <platform-specific><html><html-template location="component://perlesduberry/template/product/InlineSummary.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

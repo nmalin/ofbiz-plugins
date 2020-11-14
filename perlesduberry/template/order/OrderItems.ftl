@@ -61,9 +61,8 @@ under the License.
     <tbody>
       <#list orderItems as orderItem>
         <tr>
-            <#assign product = orderItem.getRelatedOne("Product", true)!/> <#-- should always exist because of FK constraint, but just in case -->
-            <td>
-              ${orderItem.productId}
+            <td><#assign productId = orderItem.productId>
+            <@ofbizScreen>component://perlesduberry/widget/GenericEmbededScreens.xml#displayProductSummaryInline</@ofbizScreen>
             </td>
             <td>
               ${orderItem.quantity?string.number}
