@@ -28,18 +28,18 @@ under the License.
       <div class="card-header">
         <strong>
         <#if "Y" == maySelectItems?default("N") && "Y" == returnLink?default("N") && "ORDER_COMPLETED" == (orderHeader.statusId)! && "PLACING_CUSTOMER" == roleTypeId!>
-          <a href="<@ofbizUrl fullPath="true">makeReturn?orderId=${orderHeader.orderId}</@ofbizUrl>"
+          <a href="<@ofbizUrl fullPath="true" encode="false" webSiteId=webSiteId>makeReturn?orderId=${orderHeader.orderId}<#if token??>&TOKEN=${token}&USERNAME=${userLogin.userLoginId}</#if></@ofbizUrl>"
               class="submenutextright">${uiLabelMap.OrderRequestReturn}</a>
         </#if>
         ${uiLabelMap.OrderOrder}
         <#if orderHeader?has_content>
           ${uiLabelMap.CommonNbr}
-          <a href="<@ofbizUrl fullPath="true">orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>"
+          <a href="<@ofbizUrl fullPath="true" encode="false" webSiteId=webSiteId>orderstatus?orderId=${orderHeader.orderId}<#if token??>&TOKEN=${token}&USERNAME=${userLogin.userLoginId}</#if></@ofbizUrl>"
               class="btn btn-sm">${orderHeader.orderId}</a>
         </#if>
         ${uiLabelMap.CommonInformation}
         <#if (orderHeader.orderId)??>
-          ${externalOrder!} [ <a href="<@ofbizUrl fullPath="true">order.pdf?orderId=${(orderHeader.orderId)!}</@ofbizUrl>"
+          ${externalOrder!} [ <a href="<@ofbizUrl fullPath="true" encode="false" webSiteId=webSiteId>order.pdf?orderId=${(orderHeader.orderId)!}<#if token??>&TOKEN=${token}&USERNAME=${userLogin.userLoginId}</#if></@ofbizUrl>"
               target="_BLANK" class="btn btn-sm">PDF</a> ]
         </#if>
         </strong>
