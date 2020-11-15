@@ -189,7 +189,7 @@ under the License.
     <CarrierShipmentMethod partyId="LAPOSTE" roleTypeId="CARRIER" shipmentMethodTypeId="COLIS_FRAIS" sequenceNumber="3"/>
     <CarrierShipmentMethod partyId="LAPOSTE" roleTypeId="CARRIER" shipmentMethodTypeId="COLIS_SURGEL" sequenceNumber="4"/>
 
-    <ProductStorePaymentSetting productStoreId="STORE_PDB" paymentMethodTypeId="EFT_ACCOUNT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <ProductStorePaymentSetting productStoreId="STORE_PDB" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStoreFacility productStoreId="STORE_PDB" facilityId="PDB_LAPAN" fromDate="2017-01-01 12:00:00.0" sequenceNum="1"/>
     <PartyAcctgPreference baseCurrencyUomId="EUR" cogsMethodId="COGS_AVG_COST" enableAccounting="N" fiscalYearStartDay="1" fiscalYearStartMonth="1" lastInvoiceNumber="1" oldInvoiceSequenceEnumId="INVSQ_ENF_SEQ" oldOrderSequenceEnumId="ODRSQ_ENF_SEQ" oldQuoteSequenceEnumId="QTESQ_ENF_SEQ" partyId="PDB" />
 
@@ -209,16 +209,21 @@ under the License.
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="12.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9006" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9000" weightUomId="WT_kg"/>
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="18.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9007" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9001" weightUomId="WT_kg"/>
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9008" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9002" weightUomId="WT_kg"/>
-    <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"/>
+    <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
+             httpPort="80" httpsPort="443"
+             httpHost="test.perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath="/perlesduberry"/>
+    <!--<WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
+             httpPort="8080" httpsPort="8443"
+             httpHost="localhost" httpsHost="localhost" enableHttps="Y" webappPath="/perlesduberry"/>-->
 
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_PDB_ROOT"
     description="The default top category to display."/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="CATALOG_PDB_ROOT"
     description="The category that has all products."/>
     <!--TVA-->
-    <TaxAuthorityRateProduct productCategoryId="TVA20" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_1" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="20" taxPromotions="Y" taxShipping="Y" description="TVA 20%"/>
-    <TaxAuthorityRateProduct productCategoryId="TVA10" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_2" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="10" taxPromotions="Y" taxShipping="Y" description="TVA 10%"/>
-    <TaxAuthorityRateProduct productCategoryId="TVA55" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="5.5" taxPromotions="Y" taxShipping="Y" description="TVA 5.5%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA20" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_1" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="20" taxPromotions="Y" taxShipping="N" description="TVA 20%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA10" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_2" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="10" taxPromotions="Y" taxShipping="N" description="TVA 10%"/>
+    <TaxAuthorityRateProduct productCategoryId="TVA55" productStoreId="STORE_PDB" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR" taxAuthorityRateSeqId="FR_TVA_3" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="5.5" taxPromotions="Y" taxShipping="N" description="TVA 5.5%"/>
 
     <ProdCatalog prodCatalogId="CATALOG_PDB" catalogName="Catalog des perles" useQuickAdd="Y"/>
     <ProductStoreCatalog productStoreId="STORE_PDB" prodCatalogId="CATALOG_PDB" fromDate="2020-01-01 12:00:00.0" sequenceNum="1"/>
