@@ -31,8 +31,6 @@ under the License.
                 <set field="layoutSettings.companySubtitle" from-field="uiLabelMap.PerlesduberryCompanySubtitle" global="true"/>
 
                 <set field="activeApp" value="perlesduberry" global="true"/>
-                <set field="applicationMenuName" value="MainAppBar" global="true"/>
-                <set field="applicationMenuLocation" value="component://perlesduberry/widget/PerlesduberryMenus.xml" global="true"/>
                 <set field="applicationTitle" from-field="uiLabelMap.PerlesduberryApplication" global="true"/>
             </actions>
             <widgets>

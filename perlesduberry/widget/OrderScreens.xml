@@ -57,7 +57,22 @@ under the License.
         </section>
     </screen>
 
-
+    <screen name="orderreview">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCheckoutReview"/>
+                <set field="parameters.formNameValue" value="orderreview" global="true"/>
+                <script location="component://ecommerce/groovyScripts/order/CheckoutReview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template multi-block="true" location="component://perlesduberry/template/order/CheckoutReview.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
     <screen name="orderheader">
         <section>
             <widgets>
@@ -70,6 +85,33 @@ under the License.
         <section>
             <widgets>
                 <platform-specific><html><html-template location="component://perlesduberry/template/order/OrderItems.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="orderSummary">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+            </actions>
+            <widgets>
+                <include-screen name="orderheader"/>
+                <horizontal-separator/>
+                <include-screen name="orderitems"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ordercomplete">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleOrderSummary"/>
+                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://perlesduberry/template/order/OrderComplete.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
             </widgets>
         </section>
     </screen>
