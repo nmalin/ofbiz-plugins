@@ -39,13 +39,15 @@ under the License.
       </tr>
     </thead>
     <tfoot>
-      <tr>
         <#assign orderTaxTotal = localOrderReadHelper.getTaxTotal()>
+        <#if localOrderReadHelper.getOrderItems().size() != 1>
+      <tr>
         <th colspan="3">${uiLabelMap.CommonSubtotal}</th>
         <td class="amount"><@ofbizCurrency amount=orderTaxTotal isoCode=currencyUomId/></td>
         <#assign orderSubTotalWithTax = orderSubTotal + orderTaxTotal>
         <td class="amount"><@ofbizCurrency amount=orderSubTotalWithTax isoCode=currencyUomId/></td>
       </tr>
+        </#if>
       <tr>
         <th colspan="4">${uiLabelMap.OrderShippingAndHandling}</th>
         <td class="amount"><@ofbizCurrency amount=orderShippingTotal isoCode=currencyUomId/></td>
