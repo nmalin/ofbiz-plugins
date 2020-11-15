@@ -20,7 +20,7 @@
 import org.apache.ofbiz.product.product.ProductContentWrapper
 
 // make the productContentWrapper
-ProductContentWrapper productContentWrapper = new ProductContentWrapper(product, request)
+ProductContentWrapper productContentWrapper = new ProductContentWrapper(dispatcher, product, locale, "text/html; charset=utf-8")
 context.productContentWrapper = productContentWrapper
 
 context.imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url") ?: "/images/defaultImage.jpg"
