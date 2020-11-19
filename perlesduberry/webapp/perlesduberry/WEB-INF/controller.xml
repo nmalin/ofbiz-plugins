@@ -24,13 +24,11 @@ under the License.
          can be found in the following xml file. A component can override the
          elements found in the common-controller.xml file. -->
     <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
-    <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
+    <include location="component://sec/webapp/sec/WEB-INF/controller.xml"/>
 
     <description>Perlesduberry Component Site Configuration File</description>
 
     <!-- Request Mappings -->
-
-    <request-map uri="displayEmail"><security https="true" auth="true"/><response name="success" type="view" value="displayEmail"/></request-map>
     <request-map uri="quickcheckout">
         <security https="true" auth="true"/>
         <event type="groovy" path="component://perlesduberry/groovyScripts/order/CartNotEmptyAndInitValues.groovy"/>
@@ -38,13 +36,4 @@ under the License.
         <response name="error" type="view" value="main"/>
     </request-map>
 
-    <!-- View Mappings -->
-    <view-map name="newcustomer" type="screen" page="component://perlesduberry/widget/ProfileScreens.xml#newcustomer"/>
-    <view-map name="orderreview" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderreview"/>
-    <view-map name="checkoutreview" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderreview"/>
-    <view-map name="quickAnonOrderReview" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderreview"/>
-    <view-map name="quickcheckout" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#checkoutoptions"/>
-    <view-map name="ordercomplete" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#ordercomplete"/>
-    <view-map name="orderstatus" type="screen" page="component://perlesduberry/widget/OrderScreens.xml#orderstatus"/>
-    <view-map name="displayEmail" type="screen" page="component://perlesduberry/widget/EmailScreens.xml#displayEmail"/>
 </site-conf>

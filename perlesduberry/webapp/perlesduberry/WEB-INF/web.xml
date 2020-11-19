@@ -25,7 +25,7 @@ under the License.
     <context-param>
         <description>A unique ID used to look up the WebSite entity. Only for component using a WebSite entity, like ecommerce</description>
         <param-name>webSiteId</param-name>
-        <param-value>PERLESDUBERRY</param-value>
+        <param-value>LOCAL</param-value>
     </context-param>
     <context-param>
         <description>A unique name used to identify/recognize the local dispatcher for the Service Engine</description>
@@ -44,11 +44,6 @@ under the License.
         <description>Remove unnecessary whitespace from HTML output.</description>
         <param-name>compressHTML</param-name>
         <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <description>Category par défaut</description>
-        <param-name>CATALOG_TOP_CATEGORY</param-name>
-        <param-value>CATALOG_PDB_ROOT</param-value>
     </context-param>
 
 
