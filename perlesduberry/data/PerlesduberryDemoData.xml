@@ -210,11 +210,14 @@ under the License.
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="18.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9007" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9001" weightUomId="WT_kg"/>
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9008" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9002" weightUomId="WT_kg"/>
     <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
-             httpPort="80" httpsPort="443"
+             httpPort="-20" httpsPort="333"
+             httpHost="perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath=""/>
+    <WebSite webSiteId="PERLESDUBERRYTEST" siteName="Site ecommerce des perles de test" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
+             httpPort="70" httpsPort="433"
              httpHost="test.perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath="/perlesduberry"/>
-    <!--<WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
+    <WebSite webSiteId="LOCAL" siteName="Site ecommerce des perles locale" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
              httpPort="8080" httpsPort="8443"
-             httpHost="localhost" httpsHost="localhost" enableHttps="Y" webappPath="/perlesduberry"/>-->
+             httpHost="localhost" httpsHost="localhost" enableHttps="Y" webappPath="/perlesduberry"/>
 
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_PDB_ROOT"
     description="The default top category to display."/>
