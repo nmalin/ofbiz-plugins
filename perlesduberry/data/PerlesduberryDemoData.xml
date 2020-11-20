@@ -211,7 +211,7 @@ under the License.
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9008" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9002" weightUomId="WT_kg"/>
     <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
              httpPort="-20" httpsPort="333"
-             httpHost="perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath=""/>
+             httpHost="perlesduberry.fr" httpsHost="perlesduberry.fr" enableHttps="Y" webappPath=""/>
     <WebSite webSiteId="PERLESDUBERRYTEST" siteName="Site ecommerce des perles de test" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
              httpPort="70" httpsPort="433"
              httpHost="test.perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath="/perlesduberry"/>
