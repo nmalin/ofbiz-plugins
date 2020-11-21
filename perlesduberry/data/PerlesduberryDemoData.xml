@@ -118,7 +118,7 @@ under the License.
     <ProductAssoc fromDate="2020-01-01 12:00:00.0" productAssocTypeId="PRODUCT_COMPONENT" quantity="1" productIdTo="TAGLIATELLE_NATURE" productId="DECOUV_TRUFFE_COF2"/>
 
     <!--Categorie -->
-    <ProductCategory categoryName="Racine" longDescription="Racine des categories de navigation de la perles du berry" productCategoryId="CATALOG_PDB_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory categoryName="Nos produits" longDescription="Racine des categories de navigation de la perles du berry" productCategoryId="CATALOG_PDB_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory categoryName="Truffes" productCategoryId="PRD_TRUFFE" productCategoryTypeId="CATALOG_CATEGORY" primaryParentCategoryId="CATALOG_PDB_ROOT"/>
     <ProductCategoryMember productCategoryId='PRD_TRUFFE' productId='TRUFFE' fromDate='2020-01-01 00:00:00.0'/>
 
@@ -171,7 +171,9 @@ under the License.
     <ShipmentMethodType description="Colis" shipmentMethodTypeId="COLIS"/>
     <ShipmentMethodType description="Colis frais" shipmentMethodTypeId="COLIS_FRAIS"/>
     <ShipmentMethodType description="Colis Surgelé" shipmentMethodTypeId="COLIS_SURGEL"/>
-    <ProductStore productStoreId="STORE_PDB" storeName="Perles deu Berry" companyName="" title=""
+    <VisualTheme visualThemeId="DAPHNIS" visualThemeSetId="ECOMMERCE" description="Daphnis Nereide theme, compatible for simple-ecommerce"/>
+    
+    <ProductStore productStoreId="STORE_PDB" storeName="Perles du Berry" companyName="" title=""
         subtitle="" payToPartyId="PDB" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
         addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
         vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="P" showPricesWithVatTax="Y"
@@ -179,7 +181,7 @@ under the License.
         defaultLocaleString="fr_FR" defaultCurrencyUomId="EUR" defaultSalesChannelEnumId="" allowPassword="Y" explodeOrderItems="N" retryFailedAuths="Y" reqReturnInventoryReceive="N"
         headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
         itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED"
-        visualThemeId="EC_DEFAULT" prodSearchExcludeVariants="Y" autoApproveInvoice="Y" autoApproveOrder="Y" showOutOfStockProducts="Y"/>
+        visualThemeId="DAPHNIS" prodSearchExcludeVariants="Y" autoApproveInvoice="Y" autoApproveOrder="Y" showOutOfStockProducts="Y"/>
     <CarrierShipmentMethod partyId="_NA_" roleTypeId="CARRIER" shipmentMethodTypeId="NO_SHIPPING" sequenceNumber="1"/>
 
     <Party partyId="LAPOSTE" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
