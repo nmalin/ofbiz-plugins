@@ -270,7 +270,8 @@ under the License.
     <PartyContentType partyContentTypeId="SALES_INVOICE_TPL" parentTypeId="INVOICE_TEMPLATE" description="Content dedicate to rendering sales invoices"/>
 
     <!--Email-->
-    <DataResource dataResourceId="PRDS_ODR_CONFIRM_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
+<create-replace>
+    <DataResource dataResourceId="PRDS_ODR_CONFIRM_FR" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL"/>
     <ElectronicText dataResourceId="PRDS_ODR_CONFIRM_FR">
         <textData><![CDATA[<p>Bonjour,</p>
 <p>Merci de tout coeur pour votre commande.
@@ -279,11 +280,11 @@ S'il y avait le moindre problème vous pouvez modifier votre commande à tout mo
 le lien <a href="<@ofbizUrl encode="true">orderstatus?queryToken=${queryToken!}&TOKEN=${token!}&USERNAME=${userLoginId!}</@ofbizUrl>">${orderId!}</a></p>
 <p>Si tout va bien , comme nous l'espérons, vous recevrez très prochainement un numero de suivi qui vous permettra de savoir quand vous recevrez votre commande.</p>
 ]]></textData></ElectronicText>
-    <Content contentId="PRDS_ODR_CONFIRM_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_ODR_CONFIRM_FR" description="Email FR confirmation commande" localeString="fr"/>
+    <Content contentId="PRDS_ODR_CONFIRM_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_ODR_CONFIRM_FR" description="Email FR confirmation commande" contentName="Confirmation de votre commande"/>
     <ContentPurpose contentId="PRDS_ODR_CONFIRM_FR" contentPurposeTypeId="PRDS_ODR_CONFIRM"/>
     <WebSiteContent webSiteId="LOCAL" contentId="PRDS_ODR_CONFIRM_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
 
-    <DataResource dataResourceId="PRDS_TELL_FRIEND_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
+    <DataResource dataResourceId="PRDS_TELL_FRIEND_FR" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL"/>
     <ElectronicText dataResourceId="PRDS_TELL_FRIEND_FR">
         <textData><![CDATA[<p>Bonjour,
     <p>Nous ne nous connaissons pas cependant nous notons que votre ami qui c'est annoncé comme ${sendFrom} doit beaucoup vous aimer.</p>
@@ -293,12 +294,11 @@ le lien <a href="<@ofbizUrl encode="true">orderstatus?queryToken=${queryToken!}&
     <p>Il vous a notamment mise en avant ce produit</p>
     <@ProductSummary>
     ]]></textData></ElectronicText>
-    <Content contentId="PRDS_TELL_FRIEND_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_TELL_FRIEND_FR" description="Email FR confirmation commande" localeString="fr"/>
+    <Content contentId="PRDS_TELL_FRIEND_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_TELL_FRIEND_FR" description="Email FR confirmation commande" />
     <ContentPurpose contentId="PRDS_TELL_FRIEND_FR" contentPurposeTypeId="PRDS_TELL_FRIEND"/>
     <WebSiteContent webSiteId="LOCAL" contentId="PRDS_TELL_FRIEND_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
-
-    <DataResource dataResourceId="PRDS_CUST_REGISTER_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
-    <ElectronicText dataResourceId="PRDS_CUST_REGISTER_FR">
+    <DataResource dataResourceId="PRDS_CUST_REGISTER_F" dataResourceTypeId="ELECTRONIC_TEXT" />
+    <ElectronicText dataResourceId="PRDS_CUST_REGISTER_F">
         <textData><![CDATA[<p>Bonjour,</p>
 <p>Nous sommes très heureux de vous compter désormais parmi nos clients.</p>
 <p>Vous êtes amoureux comme nous de bons produits issues directement de nos exploitations produisant ce fameux diamant noir : la Truffe Noire du Berry.</p>
@@ -308,8 +308,8 @@ le lien <a href="<@ofbizUrl encode="true">orderstatus?queryToken=${queryToken!}&
 <p>Un grand merci et à tout de suite !</p>
 <p>Stéphanie BORELLO productrice de Truffes Noires du Berry</p>
     ]]></textData></ElectronicText>
-    <Content contentId="PRDS_CUST_REGISTER_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_CUST_REGISTER_FR" description="Email FR confirmation commande" localeString="fr"/>
-    <ContentPurpose contentId="PRDS_CUST_REGISTER_FR" contentPurposeTypeId="PRDS_TELL_FRIEND"/>
-    <WebSiteContent webSiteId="LOCAL" contentId="PRDS_CUST_REGISTER_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
-
+    <Content contentId="PRDS_CUST_REGISTER_F" contentTypeId="DOCUMENT" dataResourceId="PRDS_CUST_REGISTER_F" description="Email FR confirmation d'inscription" contentName="Confirmation d'inscription"/>
+    <ContentPurpose contentId="PRDS_CUST_REGISTER_F" contentPurposeTypeId="PRDS_CUST_REGISTER"/>
+    <WebSiteContent webSiteId="LOCAL" contentId="PRDS_CUST_REGISTER_F" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
+</create-replace>
 </entity-engine-xml>
