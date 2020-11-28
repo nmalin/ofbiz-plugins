@@ -28,6 +28,11 @@ under the License.
     <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="PDB"/>
     <Facility facilityId="PDB_LAPAN" facilityTypeId="OFFICE" facilityName="Lapan" description="" ownerPartyId="PDB" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="" defaultDaysToShip="5" />
     <FacilityLocation facilityId="PDB_LAPAN" locationSeqId="GENERAL" locationTypeEnumId="FLT_PICKLOC" areaId="A"/>
+    <PaymentMethod paymentMethodId="PDB_ACCOUNT" paymentMethodTypeId="EFT_ACCOUNT" partyId="PDB" fromDate="2020-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="PDB_EFTACCOUNT" contactMechTypeId="POSTAL_ADDRESS" infoString=""/>
+    <PostalAddress contactMechId="PDB_EFTACCOUNT" toName="CM ISSOUDUN" attnName="" address1="1 rue de la république" address2="BP 58" city="ISSOUNDUN CEDEX" postalCode="36102" countryGeoId="FRA" stateProvinceGeoId="_NA_"/>
+
+    <EftAccount paymentMethodId="PDB_ACCOUNT" nameOnAccount="SAS PERLES DU BERRY" bankName="CRÉDIT MUTUEL" routingNumber="CMCIFR2A" accountType="IBAN" accountNumber="FR76 10278 37315 00011017301 04" contactMechId="PDB_EFTACCOUNT"/>
 
     <!--Produit -->
     <ProductFeatureCategory productFeatureCategoryId="QUAL_TRUFFE" description="Qualité des truffes"/>
@@ -172,7 +177,7 @@ under the License.
     <ShipmentMethodType description="Colis frais" shipmentMethodTypeId="COLIS_FRAIS"/>
     <ShipmentMethodType description="Colis Surgelé" shipmentMethodTypeId="COLIS_SURGEL"/>
     <VisualTheme visualThemeId="DAPHNIS" visualThemeSetId="ECOMMERCE" description="Daphnis Nereide theme, compatible for simple-ecommerce"/>
-    
+
     <ProductStore productStoreId="STORE_PDB" storeName="Perles du Berry" companyName="" title=""
         subtitle="" payToPartyId="PDB" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
         addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
@@ -211,9 +216,11 @@ under the License.
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="12.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9006" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9000" weightUomId="WT_kg"/>
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="18.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9007" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9001" weightUomId="WT_kg"/>
     <ShipmentCostEstimate carrierPartyId="LAPOSTE" carrierRoleTypeId="CARRIER" geoIdTo="FRA" orderFlatPrice="29.00" orderPricePercent="0.000000" priceUomId="EUR" productStoreId="STORE_PDB" productStoreShipMethId="PDB_COLIS_SURGEL" shipmentCostEstimateId="9008" shipmentMethodTypeId="COLIS_SURGEL" weightBreakId="9002" weightUomId="WT_kg"/>
+<create-replace>
     <WebSite webSiteId="PERLESDUBERRY" siteName="Site ecommerce des perles" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
-             httpPort="-20" httpsPort="333"
-             httpHost="perlesduberry.fr" httpsHost="perlesduberry.fr" enableHttps="Y" webappPath=""/>
+             httpPort="-20" httpsPort="343"
+             httpHost="perlesduberry.fr" httpsHost="perlesduberry.fr" enableHttps="Y" webappPath="/"/>
+</create-replace>
     <WebSite webSiteId="PERLESDUBERRYTEST" siteName="Site ecommerce des perles de test" productStoreId="STORE_PDB" visualThemeSetId="ECOMMERCE"
              httpPort="70" httpsPort="433"
              httpHost="test.perlesduberry.fr" httpsHost="test.perlesduberry.fr" enableHttps="Y" webappPath="/perlesduberry"/>
@@ -261,4 +268,48 @@ under the License.
 
     <PartyContentType partyContentTypeId="INVOICE_TEMPLATE" description="Content dedicate to rendering invoices"/>
     <PartyContentType partyContentTypeId="SALES_INVOICE_TPL" parentTypeId="INVOICE_TEMPLATE" description="Content dedicate to rendering sales invoices"/>
+
+    <!--Email-->
+    <DataResource dataResourceId="PRDS_ODR_CONFIRM_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
+    <ElectronicText dataResourceId="PRDS_ODR_CONFIRM_FR">
+        <textData><![CDATA[<p>Bonjour,</p>
+<p>Merci de tout coeur pour votre commande.
+Vous trouverez toutes les informations sur votre commande en bas de page et n'hésitez pas à relire pour vérifier que tout est correcte.
+S'il y avait le moindre problème vous pouvez modifier votre commande à tout moment en vous rendant sur le site directement via
+le lien <a href="<@ofbizUrl encode="true">orderstatus?queryToken=${queryToken!}&TOKEN=${token!}&USERNAME=${userLoginId!}</@ofbizUrl>">${orderId!}</a></p>
+<p>Si tout va bien , comme nous l'espérons, vous recevrez très prochainement un numero de suivi qui vous permettra de savoir quand vous recevrez votre commande.</p>
+]]></textData></ElectronicText>
+    <Content contentId="PRDS_ODR_CONFIRM_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_ODR_CONFIRM_FR" description="Email FR confirmation commande" localeString="fr"/>
+    <ContentPurpose contentId="PRDS_ODR_CONFIRM_FR" contentPurposeTypeId="PRDS_ODR_CONFIRM"/>
+    <WebSiteContent webSiteId="LOCAL" contentId="PRDS_ODR_CONFIRM_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
+
+    <DataResource dataResourceId="PRDS_TELL_FRIEND_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
+    <ElectronicText dataResourceId="PRDS_TELL_FRIEND_FR">
+        <textData><![CDATA[<p>Bonjour,
+    <p>Nous ne nous connaissons pas cependant nous notons que votre ami qui c'est annoncé comme ${sendFrom} doit beaucoup vous aimer.</p>
+    <p>C'est pourquoi il vous recommande de faire un petit tour sur notre site <a href="<@ofbizUrl>main</@ofbiz>">Perles du Berry.fr</a>
+     car comme nous le pensons vous devez être un amateur de bon produit et particulièrement ceux à base de Truffes Noires.</p>
+
+    <p>Il vous a notamment mise en avant ce produit</p>
+    <@ProductSummary>
+    ]]></textData></ElectronicText>
+    <Content contentId="PRDS_TELL_FRIEND_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_TELL_FRIEND_FR" description="Email FR confirmation commande" localeString="fr"/>
+    <ContentPurpose contentId="PRDS_TELL_FRIEND_FR" contentPurposeTypeId="PRDS_TELL_FRIEND"/>
+    <WebSiteContent webSiteId="LOCAL" contentId="PRDS_TELL_FRIEND_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
+
+    <DataResource dataResourceId="PRDS_CUST_REGISTER_FR" dataResourceTypeId="ELECTRONIC_TEXT" localeString="fr" dataTemplateTypeId="FTL"/>
+    <ElectronicText dataResourceId="PRDS_CUST_REGISTER_FR">
+        <textData><![CDATA[<p>Bonjour,</p>
+<p>Nous sommes très heureux de vous compter désormais parmi nos clients.</p>
+<p>Vous êtes amoureux comme nous de bons produits issues directement de nos exploitations produisant ce fameux diamant noir : la Truffe Noire du Berry.</p>
+<p>Venez découvrir notre histoire ainsi que notre gamme de produits à base de truffes noires issue de nos plantations. </p>
+<p>Toute la recette pour satisfaire vos papilles!</p>
+<br>
+<p>Un grand merci et à tout de suite !</p>
+<p>Stéphanie BORELLO productrice de Truffes Noires du Berry</p>
+    ]]></textData></ElectronicText>
+    <Content contentId="PRDS_CUST_REGISTER_FR" contentTypeId="DOCUMENT" dataResourceId="PRDS_CUST_REGISTER_FR" description="Email FR confirmation commande" localeString="fr"/>
+    <ContentPurpose contentId="PRDS_CUST_REGISTER_FR" contentPurposeTypeId="PRDS_TELL_FRIEND"/>
+    <WebSiteContent webSiteId="LOCAL" contentId="PRDS_CUST_REGISTER_FR" webSiteContentTypeId="EMAIL_MESSAGE" fromDate="2020-01-01 00:00:00.0"/>
+
 </entity-engine-xml>
