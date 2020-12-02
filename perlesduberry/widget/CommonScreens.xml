@@ -39,26 +39,10 @@ under the License.
         </section>
     </screen>
 
-    <screen name="PerlesduberryCommonDecorator">
+    <screen name="LogoPerlesDuBerry">
         <section>
-            <actions>
-            </actions>
             <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <section>
-                            <condition>
-                                <if-has-permission permission="PERLESDUBERRY" action="_VIEW"/>
-                            </condition>
-                            <widgets>
-                                <decorator-section-include name="body"/>
-                            </widgets>
-                            <fail-widgets>
-                                <label style="h3">${uiLabelMap.PerlesduberryViewPermissionError}</label>
-                            </fail-widgets>
-                        </section>
-                    </decorator-section>
-                </decorator-screen>
+                <platform-specific><html><html-template location="component://perlesduberry/template/includes/LogoHeader.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

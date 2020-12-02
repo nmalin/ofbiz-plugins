@@ -45,6 +45,11 @@ under the License.
         <param-name>compressHTML</param-name>
         <param-value>false</param-value>
     </context-param>
+    <context-param>
+        <description>Sous écran dédié pour le logo</description>
+        <param-name>webappLogoHeader</param-name>
+        <param-value>component://perlesduberry/widget/CommonScreens.xml#LogoPerlesDuBerry</param-value>
+    </context-param>
 
 
     <filter>
