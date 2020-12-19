@@ -23,10 +23,24 @@ under the License.
     <!-- The controller elements that are common to all OFBiz components
          can be found in the following xml file. A component can override the
          elements found in the common-controller.xml file. -->
+    <include location="component://payplugpaymentgateway/webapp/payplug/WEB-INF/controller.xml"/>
     <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
     <include location="component://sec/webapp/sec/WEB-INF/controller.xml"/>
+    <include location="component://perlesduberry/widget/CommandeTruffes.xml"/>
 
     <description>Perlesduberry Component Site Configuration File</description>
+
+    <request-map uri="checkExternalPayment">
+        <security https="true" direct-request="false"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.CheckOutEvents" invoke="checkExternalPayment"/>
+        <response name="none" type="request" value="emailorder"/>
+        <response name="offline" type="request" value="emailorder"/>
+        <response name="payplug" type="request" value="callPayPlug"/>
+        <response name="paypal" type="request" value="callPayPal"/>
+        <response name="cod" type="request" value="emailorder"/>
+        <response name="error" type="view" value="checkoutreview"/>
+    </request-map>
+
 
     <!-- Request Mappings -->
     <request-map uri="quickcheckout">
