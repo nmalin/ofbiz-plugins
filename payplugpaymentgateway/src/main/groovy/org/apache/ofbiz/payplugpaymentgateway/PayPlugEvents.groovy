@@ -26,7 +26,7 @@ import org.apache.ofbiz.service.ServiceUtil
 def callPayPlug() {
     String orderId = context.orderId ?: parameters.orderId
     Map createPaymentResult = run service: 'payplugCreatePaymentForOrder', with: [orderId: orderId]
-    if (ServiceUtil.isError(createPaymentResult)) {
+    if (! ServiceUtil.isSuccess(createPaymentResult)) {
         return error(ServiceUtil.getErrorMessage(createPaymentResult))
     }
 
