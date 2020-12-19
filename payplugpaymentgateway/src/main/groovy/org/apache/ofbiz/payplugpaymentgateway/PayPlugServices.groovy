@@ -1,4 +1,4 @@
-
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.ofbiz.base.lang.JSON
 import org.apache.ofbiz.base.util.HttpClient
 import org.apache.ofbiz.base.util.SSLUtil
