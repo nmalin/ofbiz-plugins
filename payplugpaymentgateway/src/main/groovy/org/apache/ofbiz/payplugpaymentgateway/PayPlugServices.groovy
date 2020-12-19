@@ -105,7 +105,7 @@ def createPayPlugPaymentForOrder() {
     restClient.setAllowUntrusted(true)
     restClient.setHostVerificationLevel(SSLUtil.getHostCertNoCheck())
     InputStream callResult = restClient.postStream()
-    String responseStatus = restClient.getResponseCode()
+    int responseStatus = restClient.getResponseCode()
     String responseString = UtilIO.readString(callResult, Charset.forName("UTF-8"))
 
     GenericValue paymentGatewayResponse = makeValue("PaymentGatewayResponse", [
