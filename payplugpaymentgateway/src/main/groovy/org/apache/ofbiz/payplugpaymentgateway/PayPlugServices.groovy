@@ -35,7 +35,7 @@ import org.apache.ofbiz.order.order.OrderReadHelper
 import org.apache.ofbiz.product.store.ProductStoreWorker
 
 def ensureStringSize(String value, int maxSize) {
-    if (! value) return ""
+    if (! value) return null
     return value.length() > maxSize ?
             value.substring(0, maxSize):
             value
@@ -99,10 +99,10 @@ def createPayPlugPaymentForOrder() {
         informMethod = "SMS"
     }
     if (postalAddressMap.address1) {
-        customerMap.address1 = ensureStringSize(postalAddressMap.address1?:"", 254)
-        customerMap.address2 = ensureStringSize(postalAddressMap.address2?:"", 254)
-        customerMap.postcode = ensureStringSize(postalAddressMap.postalCode?:"", 16)
-        customerMap.city = ensureStringSize(postalAddressMap.city?:"", 100)
+        customerMap.address1 = ensureStringSize(postalAddressMap.address1, 254)
+        customerMap.address2 = ensureStringSize(postalAddressMap.address2, 254)
+        customerMap.postcode = ensureStringSize(postalAddressMap.postalCode, 16)
+        customerMap.city = ensureStringSize(postalAddressMap.city, 100)
         customerMap.country = from("Geo").where(geoId: postalAddressMap.countryGeoId).cache().queryOne()?.geoCode
     }
 
