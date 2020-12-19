@@ -52,7 +52,7 @@ under the License.
         <event type="groovy" path="component://payplugpaymentgateway/src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugEvents.groovy"
              invoke="callPayPlug"/>
         <response name="success" type="none"/>
-        <response name="error" type="view" value="checkoutreview"/>
+        <response name="error" type="view" value="showcart"/>
     </request-map>
     <request-map uri="payPlugNotify">
         <security https="false"/>
