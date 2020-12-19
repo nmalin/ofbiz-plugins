@@ -156,7 +156,7 @@ def createPayPlugPaymentForOrder() {
         paymentGatewayResponse.create()
         return failure(UtilProperties.getMessage('PayPlugUiLabels', 'PayPlugUnparsableResponse', locale))
     }
-    paymentGatewayResponse.referenceNum = "ERROR : ${httpResponse.getStatusLine().getStatusCode()}"
+    paymentGatewayResponse.referenceNum = "ERROR : ${httpResponse.getStatusLine().getStatusCode()}" as String
     paymentGatewayResponse.create()
     return failure(UtilProperties.getMessage('PayPlugUiLabels', 'PayPlugCallFailed', locale))
 }
