@@ -26,7 +26,7 @@ under the License.
     <include location="component://payplugpaymentgateway/webapp/payplug/WEB-INF/controller.xml"/>
     <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
     <include location="component://sec/webapp/sec/WEB-INF/controller.xml"/>
-    <include location="component://perlesduberry/widget/CommandeTruffes.xml"/>
+    <!--include location="component://perlesduberry/widget/CommandeTruffes.xml"/-->
 
     <description>Perlesduberry Component Site Configuration File</description>
 
