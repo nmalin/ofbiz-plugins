@@ -99,10 +99,10 @@ def createPayPlugPaymentForOrder() {
         informMethod = "SMS"
     }
     if (postalAddressMap.address1) {
-        customerMap.address1 = ensureStringSize(postalAddressMap.address1?:"", '254')
-        customerMap.address2 = ensureStringSize(postalAddressMap.address2?:"", '254')
-        customerMap.postcode = ensureStringSize(postalAddressMap.postalCode?:"", '16')
-        customerMap.city = ensureStringSize(postalAddressMap.city?:"", '100')
+        customerMap.address1 = ensureStringSize(postalAddressMap.address1?:"", 254)
+        customerMap.address2 = ensureStringSize(postalAddressMap.address2?:"", 254)
+        customerMap.postcode = ensureStringSize(postalAddressMap.postalCode?:"", 16)
+        customerMap.city = ensureStringSize(postalAddressMap.city?:"", 100)
         customerMap.country = from("Geo").where(geoId: postalAddressMap.countryGeoId).cache().queryOne()?.geoCode
     }
 
