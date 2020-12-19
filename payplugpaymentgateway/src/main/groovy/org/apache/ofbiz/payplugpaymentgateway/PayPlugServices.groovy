@@ -1,38 +1,16 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-package org.apache.ofbiz.payplugpaymentgateway
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.apache.http.HttpEntity
-import org.apache.http.client.methods.CloseableHttpResponse
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.entity.StringEntity
-import org.apache.http.impl.client.CloseableHttpClient
-import org.apache.http.impl.client.HttpClients
-import org.apache.http.util.EntityUtils
 import org.apache.ofbiz.base.lang.JSON
+import org.apache.ofbiz.base.util.HttpClient
+import org.apache.ofbiz.base.util.SSLUtil
 import org.apache.ofbiz.base.util.StringUtil
 import org.apache.ofbiz.base.util.UtilDateTime
+import org.apache.ofbiz.base.util.UtilIO
 import org.apache.ofbiz.base.util.UtilProperties
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.order.order.OrderReadHelper
 import org.apache.ofbiz.product.store.ProductStoreWorker
+
+import java.nio.charset.Charset
 
 def ensureStringSize(String value, int maxSize) {
     if (! value) return null
@@ -120,17 +98,15 @@ def createPayPlugPaymentForOrder() {
 
     //prepare request
     String requestBody = JSON.from(ccAuthReqContext)
-    CloseableHttpClient httpClient = HttpClients.createDefault()
-    HttpPost httpPost = new HttpPost("${payPlugConfig.transactionUrl}/v1/payments")
-
-    httpPost.setEntity(new StringEntity(requestBody))
-    httpPost.setHeader("Authorization", "Bearer ${payPlugConfig.apiKey}")
-    httpPost.setHeader("Content-Type", "application/json")
-
-    // Call and read response
-    CloseableHttpResponse httpResponse = httpClient.execute(httpPost)
-    HttpEntity entity = httpResponse.getEntity()
-    String responseString = EntityUtils.toString(entity)
+    HttpClient restClient = new HttpClient(payPlugConfig.transactionUrl + "/v1/payments")
+    restClient.setHeaders([Authorization: "Bearer " + payPlugConfig.apiKey])
+    restClient.setRawStream(requestBody)
+    restClient.setContentType("application/json")
+    restClient.setAllowUntrusted(true)
+    restClient.setHostVerificationLevel(SSLUtil.getHostCertNoCheck())
+    InputStream callResult = restClient.postStream()
+    String responseStatus = restClient.getResponseCode()
+    String responseString = UtilIO.readString(callResult, Charset.forName("UTF-8"))
 
     GenericValue paymentGatewayResponse = makeValue("PaymentGatewayResponse", [
             paymentGatewayResponseId: delegator.getNextSeqId("PaymentGatewayResponse"),
@@ -141,8 +117,8 @@ def createPayPlugPaymentForOrder() {
             currencyUomId: orh.getCurrency(),
             gatewayMessage: ensureStringSize(responseString, 255),
             transactionDate: UtilDateTime.nowTimestamp()])
-    if (httpResponse.getStatusLine().getStatusCode() == 200
-            || httpResponse.getStatusLine().getStatusCode() == 201) {
+    if (responseStatus == 200
+            || responseStatus == 201) {
 
         Map convertedMap = new ObjectMapper().readValue(responseString, Map.class)
 
@@ -156,7 +132,7 @@ def createPayPlugPaymentForOrder() {
         paymentGatewayResponse.create()
         return failure(UtilProperties.getMessage('PayPlugUiLabels', 'PayPlugUnparsableResponse', locale))
     }
-    paymentGatewayResponse.referenceNum = "ERROR : ${httpResponse.getStatusLine().getStatusCode()}" as String
+    paymentGatewayResponse.referenceNum = "ERROR : " + responseStatus
     paymentGatewayResponse.create()
     return failure(UtilProperties.getMessage('PayPlugUiLabels', 'PayPlugCallFailed', locale))
 }
