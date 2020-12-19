@@ -1,0 +1,25 @@
+[[PayPlugPaymentGateway]]
+= Pay Plug Payment Gateway
+
+[[steps-to-integrate]]
+== Steps to integrate Pay Plug Payment Gateway with Apache OFBiz
+
+* Checkout or install the "payplugpaymentgateway" plugin from the Apache OFBiz repository.
+https://github.com/apache/ofbiz-plugins.git
+* Make sure you load the data from following files manually or using loadAll command.
+** PayPlugTypeData.xml
+** PayPlugSecurityPermissionSeedData.xml
+** PayPlugSecurityGroupDemoData.xml
+** PayPlugDemoData.xml
+* Make sure you have created your test account on Pay Plug and you have enabled REST APIs for your test merchant account.
+Also you have got following configuration parameters from the Pay Plug against your merchant account.
+** App Name
+** API Key
+** API Secret
+* Now build and start the server.
+* Hit following URL and use admin credentials for login.
+`https://localhost:8443/payplug/control/main`
+* Fill in the configuration parameters which you have got from Pay Plug in appropriate fields.
+Transaction URL to be entered should be of sandbox server.
+`https://cert.api.payplug.com/gateway/`
+* Now you can place order and check transactions like Auth, Capture, Refund and Release.

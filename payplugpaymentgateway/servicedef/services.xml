@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>PayPlug Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="updatePaymentGatewayPayPlug" default-entity-name="PaymentGatewayPayPlug"
+             engine="entity-auto" invoke="update" auth="true">
+        <description>Update a PaymentGatwayPayPlug</description>
+        <auto-attributes include="pk" mode="IN" />
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <!-- Pay Plug Implementations -->
+    <service name="payplugCreatePaymentForOrder" engine="groovy"
+             location="component://payplugpaymentgateway/src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugServices.groovy"
+             invoke="createPayPlugPaymentForOrder">
+        <description>Pay Plug Payment Authorization Service</description>
+        <attribute name="orderId" type="String" mode="IN"/>
+        <attribute name="payPlugPaymentId" type="String" mode="OUT"/>
+        <attribute name="redirectPaymentUrl" type="String" mode="OUT"/>
+    </service>
+    <!--service name="payplugCCAuth" engine="groovy"
+             location="component://src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugServices.groovy"
+             invoke="ccAuth">
+        <description>Pay Plug Payment Authorization Service</description>
+        <implements service="ccAuthInterface"/>
+    </service>
+    <service name="payplugCCCapture" engine="groovy"
+             location="component://src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugServices.groovy"
+             invoke="ccCapture">
+        <description>Pay Plug Payment Capture Service</description>
+        <implements service="ccCaptureInterface"/>
+    </service>
+    <service name="payplugCCRelease" engine="groovy"
+             location="component://src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugServices.groovy"
+             invoke="ccRelease">
+        <description>Pay Plug Payment Release Service</description>
+        <implements service="paymentReleaseInterface"/>
+    </service>
+    <service name="payplugCCRefund" engine="groovy"
+             location="component://src/main/groovy/org/apache/ofbiz/payplugpaymentgateway/PayPlugServices.groovy"
+             invoke="ccRefund">
+        <description>Pay Plug Payment Refund Service</description>
+        <implements service="paymentRefundInterface"/>
+    </service-->
+</services>
