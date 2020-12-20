@@ -40,7 +40,16 @@ under the License.
         <response name="cod" type="request" value="emailorder"/>
         <response name="error" type="view" value="checkoutreview"/>
     </request-map>
-
+    <request-map uri="RetryPaymentForOrder">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="retryOrderPaymentWithFirstExtPaymentMethodType"/>
+        <response name="none" type="request" value="orderstatus"/>
+        <response name="offline" type="request" value="orderstatus"/>
+        <response name="payplug" type="request" value="callPayPlug"/>
+        <response name="paypal" type="request" value="callPayPal"/>
+        <response name="cod" type="request" value="orderstatus"/>
+        <response name="error" type="view" value="orderstatus"/>
+    </request-map>
 
     <!-- Request Mappings -->
     <request-map uri="quickcheckout">
