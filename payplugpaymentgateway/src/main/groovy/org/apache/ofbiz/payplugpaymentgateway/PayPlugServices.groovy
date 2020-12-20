@@ -64,8 +64,8 @@ def createPayPlugPaymentForOrder() {
     String telecomNumber
     String informMethod = "EMAIL"
     if (!email) {
-        Map telecomMap = run service: 'getPartyTelecomNumber', with: [partyId                 : billToCustomer.partyId,
-                                                                      contactMechPurposeTypeId: 'PHONE_MOBILE']
+        Map telecomMap = run service: 'getPartyTelephone', with: [partyId                 : billToCustomer.partyId,
+                                                                  contactMechPurposeTypeId: 'PHONE_MOBILE']
         telecomNumber = telecomMap.telecomNumber
     }
     Map customerMap = [email     : email ?: "",
