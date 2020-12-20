@@ -102,26 +102,31 @@ def payPlugNotify() {
                 TransactionUtil.commit()
 
                 TransactionUtil.begin()
-                GenericValue userLogin = from("UserLogin").where(userLoginId: 'system').cache().queryOne()
+                GenericValue userLoginSystem = from("UserLogin").where(userLoginId: 'system').cache().queryOne()
                 if ('P' == paymentFlag) {
-                    OrderChangeHelper.approveOrder(dispatcher, userLogin, orderPaymentPref.orderId)
+                    OrderChangeHelper.approveOrder(dispatcher, userLoginSystem, orderPaymentPref.orderId)
                     orderPaymentPref.statusId = 'PAYMENT_RECEIVED'
                     orderPaymentPref.store()
 
-                    String comments = UtilProperties.getMessage("PayPlugUiLabels", "PayPlugPaymentReceiveViaPayPlug", locale)
+                    String comments = UtilProperties.getMessage("PayPlugUiLabels", "PayPlugPaymentReceivedViaPayPlug", locale)
                     if (requestAttrs.card) {
-                        Map card = requestAttrs.cart
+                        Map card = requestAttrs.card
                         comments += " xxx ${card.last4} - ${card.exp_month}:${card.exp_year} - ${card.brand}" as String
                     }
 
-                    results = run service: "createPaymentFromPreference", with: [orderPaymentPreferenceId: orderPaymentPref.orderPaymentPreferenceId,
-                                                                                 comments                : comments]
+                    results = run service: "createPaymentFromPreference", with: [userLogin: userLoginSystem,
+                                                                                 comments: comments,
+                                                                                 paymentRefNum: requestAttrs.id,
+                                                                                 orderPaymentPreferenceId: orderPaymentPref.orderPaymentPreferenceId]
                 } else {
                     orderPaymentPref.statusId = 'PAYMENT_DECLINED'
                     orderPaymentPref.store()
                 }
                 TransactionUtil.commit()
             } catch (Exception e) {
+                logError("""Failed to load the payment pref : ${firstGatewayResp.orderPaymentPreferenceId}
+                         for payplug payment: ${requestAttrs.id},
+                         due to ${e.toString()}""")
                 TransactionUtil.rollback()
             }
         }
