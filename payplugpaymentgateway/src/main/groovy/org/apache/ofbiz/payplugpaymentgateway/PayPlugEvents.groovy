@@ -18,17 +18,14 @@
  */
 package org.apache.ofbiz.payplugpaymentgateway
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.apache.http.util.EntityUtils
 import org.apache.ofbiz.base.util.StringUtil
 import org.apache.ofbiz.base.util.UtilDateTime
+import org.apache.ofbiz.base.util.UtilHttp
 import org.apache.ofbiz.base.util.UtilProperties
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.transaction.TransactionUtil
 import org.apache.ofbiz.order.order.OrderChangeHelper
 import org.apache.ofbiz.service.ServiceUtil
-
-import java.util.stream.Collectors
 
 
 def callPayPlug() {
@@ -50,15 +47,14 @@ def payPlugNotify() {
     }
 
     //extract request content
-    String responseString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()))
-    Map convertedMap = new ObjectMapper().readValue(responseString, Map.class)
+    Map requestAttrs = UtilHttp.getAttributeMap(request)
 
     //analyse
-    if (convertedMap.id && convertedMap.object == 'payment') {
+    if (requestAttrs.id && requestAttrs.object == 'payment') {
         GenericValue firstGatewayResp = from("PaymentGatewayResponse")
                 .where(paymentMethodTypeId: "EXT_PAYPLUG",
                         paymentServiceTypeEnumId: "PRDS_PAY_EXTERNAL",
-                        referenceNum: convertedMap.id)
+                        referenceNum: requestAttrs.id)
                 .queryFirst()
 
         //of waiting response
@@ -70,22 +66,22 @@ def payPlugNotify() {
             String paymentStatus
             String paymentStatusMessage
             String paymentFlag
-            if (firstGatewayResp.referenceNum == convertedMap.id) {
-                if (convertedMap.is_paid) {
+            if (firstGatewayResp.referenceNum == requestAttrs.id) {
+                if (requestAttrs.is_paid) {
                     paymentStatus = "Paid"
                     paymentFlag = 'P'
-                } else if (convertedMap.failure) {
-                    paymentStatus = convertedMap.failure.aborted
-                    paymentStatusMessage = convertedMap.failure.message
+                } else if (requestAttrs.failure) {
+                    paymentStatus = requestAttrs.failure.aborted
+                    paymentStatusMessage = requestAttrs.failure.message
                     paymentFlag = 'F'
                 }
             } else {
                 //payment not matching
                 paymentStatus = "Not_Match"
                 paymentFlag = 'F'
-                paymentStatusMessage = "Attendeed ${firstGatewayResp.referenceNum}, received ${convertedMap.id}"
+                paymentStatusMessage = "Attendeed ${firstGatewayResp.referenceNum}, received ${requestAttrs.id}"
             }
-            BigDecimal amount = new BigDecimal(convertedMap.amount)
+            BigDecimal amount = new BigDecimal(requestAttrs.amount)
             amount = amount.movePointLeft(2)
             try {
                 TransactionUtil.begin()
@@ -95,9 +91,9 @@ def payPlugNotify() {
                         amount                  : amount,
                         paymentMethodTypeId     : "EXT_PAYPLUG",
                         paymentServiceTypeEnumId: "PRDS_PAY_EXTERNAL",
-                        currencyUomId           : convertedMap.currency,
-                        referenceNum            : convertedMap.id,
-                        subReference            : StringUtil.replaceString(convertedMap.id, 'pay_', ''),
+                        currencyUomId           : requestAttrs.currency,
+                        referenceNum            : requestAttrs.id,
+                        subReference            : StringUtil.replaceString(requestAttrs.id, 'pay_', ''),
                         gatewayCode             : paymentStatus,
                         gatewayFlag             : paymentFlag,
                         gatewayMessage          : paymentStatusMessage,
@@ -113,8 +109,8 @@ def payPlugNotify() {
                     orderPaymentPref.store()
 
                     String comments = UtilProperties.getMessage("PayPlugUiLabels", "PayPlugPaymentReceiveViaPayPlug", locale)
-                    if (convertedMap.card) {
-                        Map card = convertedMap.cart
+                    if (requestAttrs.card) {
+                        Map card = requestAttrs.cart
                         comments += " xxx ${card.last4} - ${card.exp_month}:${card.exp_year} - ${card.brand}" as String
                     }
 
