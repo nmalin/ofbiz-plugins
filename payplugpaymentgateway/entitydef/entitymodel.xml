@@ -38,6 +38,7 @@ under the License.
         <field name="returnUrl" type="value"><description> </description></field>
         <field name="cancelUrl" type="value"><description> </description></field>
         <field name="transactionUrl" type="value"><description>Transaction URL Test or Live</description></field>
+        <field name="paymentUrl" type="value"><description>PayPal url to start/restart a transaction, linked to a payment</description></field>
         <field name="notificationUrl" type="value"><description>OFBiz url to receive post notification from payplug</description></field>
         <prim-key field="paymentGatewayConfigId"/>
         <relation type="one" fk-name="PGPP_PGC" rel-entity-name="PaymentGatewayConfig">

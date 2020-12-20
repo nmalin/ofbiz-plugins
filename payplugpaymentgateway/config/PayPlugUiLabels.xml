@@ -44,6 +44,10 @@ under the License.
     <property key="PayPlugEditConfigurations">
         <value xml:lang="en">Edit Configurations</value>
     </property>
+    <property key="PayPlugPaymentReceivedViaPayPlug">
+        <value xml:lang="en">Received via pay plug with credit card: </value>
+        <value xml:lang="fr">Reçu via PayPlug avec la carte: </value>
+    </property>
     <property key="PayPlugOrderNotWaitPayment">
         <value xml:lang="en">This order not attendee PayPlug payment</value>
         <value xml:lang="fr">Cette commande n'attent pas de paiement par PayPlug</value>

@@ -124,6 +124,7 @@ def createPayPlugPaymentForOrder() {
 
         if (convertedMap.object == "payment") {
             paymentGatewayResponse.referenceNum = convertedMap.id
+            paymentGatewayResponse.subReference = StringUtil.replaceString(convertedMap.id, 'pay_', '')
             paymentGatewayResponse.create()
             return [payPlugPaymentId  : convertedMap.id,
                     redirectPaymentUrl: convertedMap.hosted_payment.payment_url]
