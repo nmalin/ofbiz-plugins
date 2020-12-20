@@ -28,6 +28,8 @@ import org.apache.ofbiz.entity.transaction.TransactionUtil
 import org.apache.ofbiz.order.order.OrderChangeHelper
 import org.apache.ofbiz.service.ServiceUtil
 
+import java.util.stream.Collectors
+
 
 def callPayPlug() {
     String orderId = context.orderId ?: parameters.orderId
@@ -43,9 +45,15 @@ def callPayPlug() {
 def payPlugNotify() {
 
     // first verify this is valid from PayPlug
-    String responseString = EntityUtils.toString(response.getEntity())
+    if (request.getMethod() != 'POST') {
+        return error("Receive unlogical request")
+    }
+
+    //extract request content
+    String responseString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()))
     Map convertedMap = new ObjectMapper().readValue(responseString, Map.class)
 
+    //analyse
     if (convertedMap.id && convertedMap.object == 'payment') {
         GenericValue firstGatewayResp = from("PaymentGatewayResponse")
                 .where(paymentMethodTypeId: "EXT_PAYPLUG",
