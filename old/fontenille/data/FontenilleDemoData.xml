@@ -1,0 +1,75 @@
+
+<entity-engine-xml>
+
+    <Party partyId="6666" partyTypeId="PERSON" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <Person lastName="Malin" firstName="Nicolas" partyId="6666"/>
+    <UserLogin userLoginId="nicolas" partyId="6666"/>
+    <Party partyId="FONT" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <PartyGroup groupName="Perles du Berry" partyId="FONT"/>
+    <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="FONT"/>
+    <Facility facilityId="FONT_LAPAN" facilityTypeId="OFFICE" facilityName="Lapan" description="" ownerPartyId="FONT" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="" defaultDaysToShip="5" />
+    <FacilityLocation facilityId="FONT_LAPAN" locationSeqId="GENERAL" locationTypeEnumId="FLT_PICKLOC" areaId="A"/>
+    <PaymentMethod paymentMethodId="FONT_ACCOUNT" paymentMethodTypeId="EFT_ACCOUNT" partyId="FONT" fromDate="2020-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="FONT_EFTACCOUNT" contactMechTypeId="POSTAL_ADDRESS" infoString=""/>
+    <PostalAddress contactMechId="FONT_EFTACCOUNT" toName="CM ISSOUDUN" attnName="" address1="1 rue de la république" address2="BP 58" city="ISSOUNDUN CEDEX" postalCode="36102" countryGeoId="FRA" stateProvinceGeoId="_NA_"/>
+
+    <EftAccount paymentMethodId="FONT_ACCOUNT" nameOnAccount="SAS PERLES DU BERRY" bankName="CRÉDIT MUTUEL" routingNumber="CMCIFR2A" accountType="IBAN" accountNumber="FR76 10278 37315 00011017301 04" contactMechId="FONT_EFTACCOUNT"/>
+
+    <!--Produit -->
+    <Product productId="CH_ORCHIDEE" productTypeId="FINISHED_GOOD" internalName="Chambre Orchidée" isVirtual="N" isVariant="N"/>
+    <Product productId="CH_EPI" productTypeId="FINISHED_GOOD" internalName="Chambre Épis de blé" isVirtual="N" isVariant="N"/>
+    <Product productId="CH_CHENE" productTypeId="FINISHED_GOOD" internalName="Chambre Feuille de chêne" isVirtual="N" isVariant="N"/>
+
+    <!-- Tax configuration -->
+    <Party partyId="TRESOR_PUBLIC_FR" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
+    <PartyGroup groupName="Trésor Public Français" partyId="TRESOR_PUBLIC_FR"/>
+    <PartyRole partyId="TRESOR_PUBLIC_FR" roleTypeId="TAX_AUTHORITY"/>
+    <TaxAuthority includeTaxInPrice="Y" requireTaxIdForExemption="Y" taxAuthGeoId="FRA" taxAuthPartyId="TRESOR_PUBLIC_FR"/>
+    <Party partyId="_NA_" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+    <PartyGroup groupName="No applicate" partyId="_NA_"/>
+    <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
+
+    <VisualTheme visualThemeId="FONTENILLE" visualThemeSetId="ECOMMERCE"/>
+
+    <ProductStore productStoreId="STORE_FONT" storeName="Perles du Berry" companyName="" title=""
+        subtitle="" payToPartyId="FONT" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
+        addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
+        vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="CMD" showPricesWithVatTax="Y"
+        inventoryFacilityId="FONT_LAPAN" oneInventoryFacility="Y" checkInventory="Y" reserveInventory="Y" balanceResOnOrderCreation="N" reserveOrderEnumId="" requireInventory="Y"
+        defaultLocaleString="fr_FR" defaultCurrencyUomId="EUR" defaultSalesChannelEnumId="" allowPassword="Y" explodeOrderItems="N" retryFailedAuths="Y" reqReturnInventoryReceive="N"
+        headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
+        itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED"
+        visualThemeId="FONTENILLE" prodSearchExcludeVariants="Y" autoApproveInvoice="Y" autoApproveOrder="Y" showOutOfStockProducts="Y"/>
+
+    <ProductStorePaymentSetting productStoreId="STORE_FONT" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <ProductStoreFacility productStoreId="STORE_FONT" facilityId="FONT_LAPAN" fromDate="2017-01-01 12:00:00.0" sequenceNum="1"/>
+
+<create-replace>
+    <WebSite webSiteId="Fontenille" siteName="Site fontenille" productStoreId="STORE_FONT" visualThemeSetId="ECOMMERCE"
+             httpPort="-20" httpsPort="343"
+             httpHost="Fontenille.fr" httpsHost="Fontenille.fr" enableHttps="Y" webappPath="/"/>
+</create-replace>
+    <!--WebSite webSiteId="FontenilleTEST" siteName="Site ecommerce des perles de test" productStoreId="STORE_FONT" visualThemeSetId="ECOMMERCE"
+             httpPort="70" httpsPort="433"
+             httpHost="test.Fontenille.fr" httpsHost="test.Fontenille.fr" enableHttps="Y" webappPath="/Fontenille"/>
+    <WebSite webSiteId="LOCAL" siteName="Site ecommerce des perles locale" productStoreId="STORE_FONT_INTEG" visualThemeSetId="ECOMMERCE"
+             httpPort="8080" httpsPort="8443"
+             httpHost="localhost" httpsHost="localhost" enableHttps="Y" webappPath="/Fontenille"/>
+-->
+    <ProductCategory productCategoryId="CATALOG_FONT_ROOT"/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_FONT_ROOT"
+    description="The default top category to display."/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="CATALOG_FONT_ROOT"
+    description="The category that has all products."/>
+    <!--TVA-->
+    <ProdCatalog prodCatalogId="CATALOG_FONT" catalogName="Catalog des perles" useQuickAdd="Y"/>
+    <ProductStoreCatalog productStoreId="STORE_FONT" prodCatalogId="CATALOG_FONT" fromDate="2020-01-01 12:00:00.0" sequenceNum="1"/>
+    <ProdCatalogCategory prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT" prodCatalogId="CATALOG_FONT" productCategoryId="CATALOG_FONT_ROOT" fromDate="2020-01-01 00:00:00.0" sequenceNum="2"/>
+
+    <!--Prix repas-->
+    <ProductPrice productId="CH_CHENE" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="65" />
+    <ProductPrice productId="CH_EPI" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="65"/>
+    <ProductPrice productId="CH_ORCHIDEE" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="EUR" productStoreGroupId="_NA_" fromDate="2017-01-01 12:00:00.0" price="65"/>
+
+</entity-engine-xml>
+
