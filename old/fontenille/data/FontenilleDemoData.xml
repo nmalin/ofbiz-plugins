@@ -5,7 +5,7 @@
     <Person lastName="Malin" firstName="Nicolas" partyId="6666"/>
     <UserLogin userLoginId="nicolas" partyId="6666"/>
     <Party partyId="FONT" partyTypeId="PARTY_GROUP" preferredCurrencyUomId="EUR" statusId="PARTY_ENABLED" />
-    <PartyGroup groupName="Perles du Berry" partyId="FONT"/>
+    <PartyGroup groupName="La Fontenille" partyId="FONT"/>
     <PartyRole roleTypeId="INTERNAL_ORGANIZATIO" partyId="FONT"/>
     <Facility facilityId="FONT_LAPAN" facilityTypeId="OFFICE" facilityName="Lapan" description="" ownerPartyId="FONT" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" defaultWeightUomId="" defaultDaysToShip="5" />
     <FacilityLocation facilityId="FONT_LAPAN" locationSeqId="GENERAL" locationTypeEnumId="FLT_PICKLOC" areaId="A"/>
@@ -13,7 +13,7 @@
     <ContactMech contactMechId="FONT_EFTACCOUNT" contactMechTypeId="POSTAL_ADDRESS" infoString=""/>
     <PostalAddress contactMechId="FONT_EFTACCOUNT" toName="CM ISSOUDUN" attnName="" address1="1 rue de la république" address2="BP 58" city="ISSOUNDUN CEDEX" postalCode="36102" countryGeoId="FRA" stateProvinceGeoId="_NA_"/>
 
-    <EftAccount paymentMethodId="FONT_ACCOUNT" nameOnAccount="SAS PERLES DU BERRY" bankName="CRÉDIT MUTUEL" routingNumber="CMCIFR2A" accountType="IBAN" accountNumber="FR76 10278 37315 00011017301 04" contactMechId="FONT_EFTACCOUNT"/>
+    <EftAccount paymentMethodId="FONT_ACCOUNT" nameOnAccount="SARL La Fontenille" bankName="CRÉDIT MUTUEL" routingNumber="CMCIFR2A" accountType="IBAN" accountNumber="FR76 10278 37315 00011017301 04" contactMechId="FONT_EFTACCOUNT"/>
 
     <!--Produit -->
     <Product productId="CH_ORCHIDEE" productTypeId="FINISHED_GOOD" internalName="Chambre Orchidée" isVirtual="N" isVariant="N"/>
@@ -31,7 +31,7 @@
 
     <VisualTheme visualThemeId="FONTENILLE" visualThemeSetId="ECOMMERCE"/>
 
-    <ProductStore productStoreId="STORE_FONT" storeName="Perles du Berry" companyName="" title=""
+    <ProductStore productStoreId="STORE_FONT" storeName="La Fontenille" companyName="" title=""
         subtitle="" payToPartyId="FONT" prorateShipping="N" prorateTaxes="Y" isDemoStore="Y" requirementMethodEnumId="PRODRQM_DS"
         addToCartReplaceUpsell="N" addToCartRemoveIncompat="N" orderDecimalQuantity="N" splitPayPrefPerShpGrp="N"
         vatTaxAuthGeoId="FRA" vatTaxAuthPartyId="TRESOR_PUBLIC_FR" orderNumberPrefix="CMD" showPricesWithVatTax="Y"
@@ -46,8 +46,8 @@
 
 <create-replace>
     <WebSite webSiteId="Fontenille" siteName="Site fontenille" productStoreId="STORE_FONT" visualThemeSetId="ECOMMERCE"
-             httpPort="-20" httpsPort="343"
-             httpHost="Fontenille.fr" httpsHost="Fontenille.fr" enableHttps="Y" webappPath="/"/>
+             httpPort="-70" httpsPort="293"
+             httpHost="www2.lafontenille.fr" httpsHost="www2.lafontenille.fr" enableHttps="Y" webappPath="/"/>
 </create-replace>
     <!--WebSite webSiteId="FontenilleTEST" siteName="Site ecommerce des perles de test" productStoreId="STORE_FONT" visualThemeSetId="ECOMMERCE"
              httpPort="70" httpsPort="433"
@@ -56,13 +56,13 @@
              httpPort="8080" httpsPort="8443"
              httpHost="localhost" httpsHost="localhost" enableHttps="Y" webappPath="/Fontenille"/>
 -->
-    <ProductCategory productCategoryId="CATALOG_FONT_ROOT"/>
+    <ProductCategory productCategoryId="CATALOG_FONT_ROOT" categoryName="Nos Chambres"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="CATALOG_FONT_ROOT"
     description="The default top category to display."/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="CATALOG_FONT_ROOT"
     description="The category that has all products."/>
     <!--TVA-->
-    <ProdCatalog prodCatalogId="CATALOG_FONT" catalogName="Catalog des perles" useQuickAdd="Y"/>
+    <ProdCatalog prodCatalogId="CATALOG_FONT" catalogName="Fontenille" useQuickAdd="Y"/>
     <ProductStoreCatalog productStoreId="STORE_FONT" prodCatalogId="CATALOG_FONT" fromDate="2020-01-01 12:00:00.0" sequenceNum="1"/>
     <ProdCatalogCategory prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT" prodCatalogId="CATALOG_FONT" productCategoryId="CATALOG_FONT_ROOT" fromDate="2020-01-01 00:00:00.0" sequenceNum="2"/>
 
