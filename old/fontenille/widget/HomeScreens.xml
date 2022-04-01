@@ -1,0 +1,65 @@
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="Home">
+        <section>
+            <widgets>
+            <actions>
+                <set field="secLoc" value="component://sec/widget"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${secLoc}/CommonScreens.xml">
+                    <decorator-section name="body">
+                        <decorator-screen name="HomeDecorator" location="${secLoc}/CommonScreens.xml">
+
+                            <decorator-section name="promoting-content">
+                                <include-screen name="BLOG_PROMO_ROOT" location="component://sec/widget/BlogScreens.xml"/>
+                            </decorator-section>
+                            <decorator-section name="services-content">
+                                <include-screen name="BLOG_QUAL_ROOT" location="component://sec/widget/BlogScreens.xml"/>
+                            </decorator-section>
+                            <decorator-section name="presentation-content">
+                                <section>
+                                    <actions>
+                                        <entity-condition entity-name="WebSiteContent" list="blogs" use-cache="true" filter-by-date="true">
+                                            <condition-list>
+                                                <condition-expr field-name="webSiteId" from-field="webSiteId"/>
+                                                <condition-expr field-name="webSiteContentTypeId" value="BLOG_PRES_ROOT"/>
+                                            </condition-list>
+                                        </entity-condition>
+                                        <entity-one entity-name="Content" value-field="rootBlogContent">
+                                            <field-map field-name="contentId" from-field="blogs[0].contentId"/>
+                                        </entity-one>
+                                        <script location="component://sec/groovyScripts/content/BrowseBlog.groovy"/>
+                                    </actions>
+                                    <widgets>
+                                        <include-screen name="BlogDetail" location="component://sec/widget/BlogScreens.xml"/>
+                                    </widgets>
+                                </section>
+                            </decorator-section>
+                            <decorator-section name="sharing">
+                                <include-screen name="SocialSharing" location="${secLoc}/CommonScreens.xml"/>
+                                <include-screen name="Osm"/>
+                            </decorator-section>
+                            <decorator-section name="promoting-product">
+                                <include-screen name="ListPromotingProducts"/>
+                            </decorator-section>
+                            <decorator-section name="suggest-content">
+                                <include-screen name="RandomizeSubListBlog" location="component://sec/widget/BlogScreens.xml"/>
+                            </decorator-section>
+                        </decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Osm">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://fontenille/template/includes/Osm.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+</screens>
