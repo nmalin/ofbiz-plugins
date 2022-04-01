@@ -28,4 +28,5 @@ under the License.
 
     <description>Fontenille Component Site Configuration File</description>
 
+    <view-map name="main" type="screen" page="component://fontenille/widget/HomeScreens.xml#Home"/>
 </site-conf>
