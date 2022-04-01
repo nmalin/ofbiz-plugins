@@ -38,11 +38,11 @@
                                 </section>
                             </decorator-section>
                             <decorator-section name="sharing">
-                                <include-screen name="SocialSharing" location="${secLoc}/CommonScreens.xml"/>
+                                <include-screen name="SocialSharing"/>
                                 <include-screen name="Osm"/>
                             </decorator-section>
                             <decorator-section name="promoting-product">
-                                <include-screen name="ListPromotingProducts"/>
+                                <!--<include-screen name="ListPromotingProducts"/>-->
                             </decorator-section>
                             <decorator-section name="suggest-content">
                                 <include-screen name="RandomizeSubListBlog" location="component://sec/widget/BlogScreens.xml"/>
@@ -57,7 +57,14 @@
     <screen name="Osm">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="..Osm.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://fontenille/template/includes/Osm.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="SocialSharing">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://fontenille/template/includes/SocialSharing.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
