@@ -31,7 +31,7 @@ under the License.
         <!--<root-decorator default-location="component://fontenille/widget/CommonScreens.xml">
             <screen name="GlobalDecorator"/>
         </root-decorator>-->
-        <generic-screen default-location="CommonScreens.xml">
+        <generic-screen default-location="component://fontenille/widget/CommonScreens.xml">
             <screen name="ProfileSummary"/>
             <screen name="CartSummary"/>
             <screen name="QuickSearch"/>
