@@ -4,7 +4,6 @@
 
     <screen name="Home">
         <section>
-            <widgets>
             <actions>
                 <set field="secLoc" value="component://sec/widget"/>
             </actions>
