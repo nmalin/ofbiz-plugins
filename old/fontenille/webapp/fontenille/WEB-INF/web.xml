@@ -48,7 +48,7 @@ under the License.
     <context-param>
         <description>Sous écran dédié pour le logo</description>
         <param-name>webappLogoHeader</param-name>
-        <param-value>component://Fontenille/widget/CommonScreens.xml#LogoFontenille</param-value>
+        <param-value>component://fontenille/widget/CommonScreens.xml#LogoFontenille</param-value>
     </context-param>
 
 

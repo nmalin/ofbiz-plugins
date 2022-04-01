@@ -25,8 +25,8 @@ under the License.
         <value xml:lang="zh-TW">Fontenille應用程式</value>
     </property>
     <property key="FontenilleCompanyName">
-        <value xml:lang="en">OFBiz: Fontenille</value>
-        <value xml:lang="zh-TW">OFBiz: Fontenille</value>
+        <value xml:lang="en">Fontenille</value>
+        <value xml:lang="zh-TW">Fontenille</value>
     </property>
     <property key="FontenilleCompanySubtitle">
         <value xml:lang="en">Part of the Apache OFBiz Family of Open Source Software</value>

@@ -34,15 +34,18 @@ under the License.
                 <set field="applicationTitle" from-field="uiLabelMap.FontenilleApplication" global="true"/>
             </actions>
             <widgets>
-                <include-screen name="GlobalDecorator" location="component://common/widget/CommonScreens.xml"/>
+                <include-screen name="GlobalDecorator" />
             </widgets>
         </section>
     </screen>
+    <screen name="ProfileSummary"><section><widgets/></section></screen>
+    <screen name="CartSummary"><section><widgets/></section></screen>
+    <screen name="QuickSearch"><section><widgets/></section></screen>
 
     <screen name="LogoFontenille">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://Fontenille/template/includes/LogoHeader.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://fontenille/template/includes/LogoHeader.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
