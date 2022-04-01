@@ -57,7 +57,7 @@
     <screen name="Osm">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://fontenille/template/includes/Osm.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="..Osm.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

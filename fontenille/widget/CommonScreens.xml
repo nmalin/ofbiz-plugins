@@ -45,7 +45,7 @@ under the License.
     <screen name="LogoFontenille">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://fontenille/template/includes/LogoHeader.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="..LogoHeader.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

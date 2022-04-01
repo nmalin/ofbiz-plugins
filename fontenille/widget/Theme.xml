@@ -18,14 +18,23 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<theme name="fontenille-theme"
+<theme name="Fontenille"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://ofbiz.apache.org/Widget-Theme" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Theme http://ofbiz.apache.org/dtds/widget-theme.xsd">
     <visual-themes>
-        <visual-theme id="FONTENILLE" display-name="Fonteille">
-            <description>${util:label('CommonEntityLabels', 'VisualTheme.description.FONTENILLE', locale)}</description>
+        <visual-theme id="FONTENILLE" display-name="fontenille">
+            <description>Theme La Fontenille</description>
         </visual-theme>
     </visual-themes>
-    
     <extends location="component://daphnis/widget/Theme.xml"/>
+    <common-screens><!--list all common screen and decorator global to each application that each theme can be surcharge or not and use the screen present on common theme-->
+        <!--<root-decorator default-location="component://fontenille/widget/CommonScreens.xml">
+            <screen name="GlobalDecorator"/>
+        </root-decorator>-->
+        <generic-screen default-location="CommonScreens.xml">
+            <screen name="ProfileSummary"/>
+            <screen name="CartSummary"/>
+            <screen name="QuickSearch"/>
+        </generic-screen>
+     </common-screens>
 </theme>
