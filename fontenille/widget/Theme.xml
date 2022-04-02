@@ -27,6 +27,12 @@ under the License.
         </visual-theme>
     </visual-themes>
     <extends location="component://daphnis/widget/Theme.xml"/>
+    <theme-properties>
+        <property name="VT_HDR_JAVASCRIPT['add']" value="/fontenille/images/js/fotorama/4.6.4/fotorama.js"/>
+        <property name="VT_STYLESHEET['add']" value="/fontenille/images/js/fotorama/4.6.4/fotorama.css"/>
+        <property name="VT_HDR_IMAGE_URL" value="/fontenille/images/FDC.png"/>
+        <property name="VT_SHORTCUT_ICON" value="/fontenille/images/favicon"/>
+    </theme-properties>
     <common-screens><!--list all common screen and decorator global to each application that each theme can be surcharge or not and use the screen present on common theme-->
         <!--<root-decorator default-location="component://fontenille/widget/CommonScreens.xml">
             <screen name="GlobalDecorator"/>
