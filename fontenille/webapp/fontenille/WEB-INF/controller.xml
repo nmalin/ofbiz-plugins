@@ -28,7 +28,7 @@ under the License.
 
     <description>Fontenille Component Site Configuration File</description>
 
-    <request-map uri="Gallery"><security https="true" auth="true"/><response name="success" type="view" value="Gallery"/></request-map>
+    <request-map uri="Gallery"><security https="true"/><response name="success" type="view" value="Gallery"/></request-map>
 
     <view-map name="main" type="screen" page="component://fontenille/widget/HomeScreens.xml#Home"/>
     <view-map name="Gallery" type="screen" page="component://fontenille/widget/HomeScreens.xml#Gallery"/>
