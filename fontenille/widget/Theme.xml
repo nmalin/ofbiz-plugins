@@ -35,7 +35,7 @@ under the License.
             <screen name="ProfileSummary"/>
             <screen name="CartSummary"/>
             <screen name="QuickSearch"/>
-            <screen name="ProductDetail"/>
+            <screen name="ProductDetail" location="component://fontenille/widget/HomeScreens.xml"/>
         </generic-screen>
      </common-screens>
 </theme>
