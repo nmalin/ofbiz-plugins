@@ -1,0 +1,4 @@
+<div class="fotorama">
+  <img src="https://s.fotorama.io/1.jpg">
+  <img src="https://s.fotorama.io/2.jpg">
+</div>
