@@ -35,6 +35,7 @@ under the License.
             <screen name="ProfileSummary"/>
             <screen name="CartSummary"/>
             <screen name="QuickSearch"/>
+            <screen name="ProductDetail"/>
         </generic-screen>
      </common-screens>
 </theme>
