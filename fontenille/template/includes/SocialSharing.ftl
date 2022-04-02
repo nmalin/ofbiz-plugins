@@ -25,6 +25,15 @@
 </section>
 <section class="w-full p-4 md:py-10 text-center bg-orange-200 bg-opacity-25">
     <div class="container text-center">
+        <h4>Gallerie</h4>
+        <a href="https://www2.lafontenille.fr:443/Gallery">
+            <img src="https://www2.lafontenille.fr:443/img?imgId=10003" alt="">
+        </a>
+        <a href="https://www2.lafontenille.fr:443/Gallery" class="btn btn-white animated animate__fadeInUp">Nos Photos</a>
+    </div>
+</section>
+<section class="w-full p-4 md:py-10 text-center bg-green-200 bg-opacity-25">
+    <div class="container text-center">
         <h4>Réserver en ligne</h4>
         <p class="my-4 md:mb-20 text-lg"></p>
         <ul class="md:grid grid-cols-2 gap-8 text-left">
