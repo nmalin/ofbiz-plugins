@@ -78,8 +78,8 @@
     <screen name="Gallery">
         <section>
             <actions>
-                <set field="layoutSettings.javaScripts[+0]" value="/fontenille/images/js/fotorama/4.6.4/fotorama.js"/>
-                <set field="layoutSettings.styleSheets[+0]" value="/fontenille/images/js/fotorama/4.6.4/fotorama.js"/>
+                <set field="layoutSettings.javaScripts[]" value="/fontenille/images/js/fotorama/4.6.4/fotorama.js"/>
+                <set field="layoutSettings.styleSheets[]" value="/fontenille/images/js/fotorama/4.6.4/fotorama.js"/>
                 <set field="secLoc" value="component://sec/widget"/>
             </actions>
             <widgets>
