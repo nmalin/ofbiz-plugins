@@ -75,6 +75,13 @@
             </widgets>
         </section>
     </screen>
+    <screen name="ProductSummary">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://fontenille/template/ProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
     <screen name="Gallery">
         <section>
             <actions>
